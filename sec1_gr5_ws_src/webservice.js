@@ -1,28 +1,30 @@
-const express = require('express');
-require('dotenv').config();
-const mysql = require('mysql2');
-const bp = require('body-parser');
-
+const express = require("express");
+const path = require("path");
+const http = require("http");
+const fs = require("fs");
 const app = express();
-const router = express.Router();
-app.use("/",router);
-router.use(bp.json());
-router.use(bp.urlencoded({
-    extended: true
-}))
 
-app.listen(3032, () => {
-    console.log('listening on 3032');
-})
+app.use(express.static(path.join(__dirname, '../sec1_gr5_src/css')));
+app.use(express.static(path.join(__dirname, '../sec1_gr5_src/picture')));
 
-let dbConn = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+const myQ1Server = http.createServer((req, res) => {
+    const userPath = req.url; 
+    if (userPath === "/") {
+        fs.readFile("../sec1_gr5_src/html/HtmlMainpage.html", function (err, data) {
+            console.log("Req at: " + userPath);
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "text/html;charset=utf-8");
+            res.write(data);
+            res.end();
+        });
+    } else {
+        console.log("Req at: " + userPath);
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "text/plain");
+        res.write("Where are you going?");
+        res.end();
+    }
+ 
 });
-
-dbConn.connect((err) => {
-    if(err) throw err;
-    console.log("Database connected");
-})
+console.log("Listening on the port 3030");
+myQ1Server.listen(3030);
