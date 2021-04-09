@@ -281,7 +281,7 @@ INSERT INTO Admin_Information (`firstname`, `lastname`, `address`, `age`, `prefe
 ("Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th", 0073),
 ("Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th", 0090),
 ("Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th", 0092),
-("Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th", 0160),
+("Kantapong", "Matangkarat", "MUICT", 20, "Orange Soda", "kantapong.mat@student.mahidol.ac.th", 0160),
 ("Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com", 2512);
 
 --
