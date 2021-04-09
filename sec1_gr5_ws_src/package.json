@@ -1,12 +1,12 @@
 {
-  "name": "js",
+  "name": "sec1_gr5_ws_src",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "webservice.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon webservice.js"
   },
-  "author": "",
+  "author": "sec1_gr5",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
