@@ -52,6 +52,7 @@ ALTER TABLE Login_Information
 
 CREATE TABLE User_Information
 (
+  `user_id` int(5) NOT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `lastname` varchar(20) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
@@ -62,6 +63,13 @@ CREATE TABLE User_Information
   CONSTRAINT FK_UserLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
 );
 
+--
+-- Alter & drop for table `User_Information`
+--
+
+ALTER TABLE User_Information
+  ADD PRIMARY KEY (`user_id`);
+  
 -- ---------------------------------------------------------------------------------------
 
 --
@@ -70,6 +78,7 @@ CREATE TABLE User_Information
 
 CREATE TABLE Admin_Information
 (
+  `admin_id` int(6) NOT NULL,
   `firstname` varchar(20) DEFAULT NULL,
   `lastname` varchar(20) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
@@ -80,6 +89,13 @@ CREATE TABLE Admin_Information
   CONSTRAINT FK_AdminLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
 );
 
+--
+-- Alter & drop for table `Admin_Information`
+--
+
+ALTER TABLE Admin_Information
+  ADD PRIMARY KEY (`admin_id`);
+  
 -- ---------------------------------------------------------------------------------------
 
 --
@@ -263,26 +279,26 @@ INSERT INTO Login_Information (`login_id`, `username`, `password`, `role`, `log`
 (2512, "LeviAKM", "2512820", "admin", "Access-granted");
 
 --
--- Dumping data for table `Login_Information`
+-- Dumping data for table `User_Information`
 --
 
-INSERT INTO User_Information (`firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
-("Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th", 0001),
-("Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th", 0002),
-("Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th", 0003),
-("Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th", 0004),
-("Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th", 0005);
+INSERT INTO User_Information (`user_id`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
+(00001, "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th", 0001),
+(00002, "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th", 0002),
+(00003, "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th", 0003),
+(00004, "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th", 0004),
+(00005, "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th", 0005);
 
 --
 -- Dumping data for table `Admin_Information`
 --
 
-INSERT INTO Admin_Information (`firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
-("Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th", 0073),
-("Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th", 0090),
-("Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th", 0092),
-("Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th", 0160),
-("Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com", 2512);
+INSERT INTO Admin_Information (`admin_id`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
+(620073, "Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th", 0073),
+(620090, "Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th", 0090),
+(620092, "Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th", 0092),
+(620160, "Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th", 0160),
+(622512, "Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com", 2512);
 
 --
 -- Dumping data for table `Branch`
