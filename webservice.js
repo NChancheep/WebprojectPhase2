@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 const bp = require('body-parser');
+var session = require('express-session');
 
 require('dotenv').config();
 
