@@ -6,7 +6,7 @@
 
 
 body {
-    background: url("background1.jpg");
+    background: url("./images/background1.jpg");
     background-repeat: no-repeat;
     /* background-size: 100%; */
     background-attachment: fixed;
@@ -173,7 +173,7 @@ footer {
 
 @media screen and (max-width: 375px) {
     body {
-        background: url("Background_regis.jpg");
+        background: url("./images/Background_regis.jpg");
         background-size: auto;
     }
 
