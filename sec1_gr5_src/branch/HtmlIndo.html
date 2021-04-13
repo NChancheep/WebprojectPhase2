@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Greyhound in China</title>
+    <title>Greyhound in Indonesia</title>
     <style>
         html {
         height: 100%;
@@ -26,13 +26,15 @@
                 
                 language: 'en'
             });
-            //Kerry Centre
-            let marker1 = new longdo.Marker({lon:103.38438424159914, lat:34.72021963458613});
-            
+            //Gunawarman
+            let marker1 = new longdo.Marker({lon:106.80708598212466, lat:-6.2376237463296205}); 
+            //grand indo
+            let marker2 = new longdo.Marker({lon:106.8204608636993, lat:-6.1947816134028395});
 
             //show maker
-            map.location({lon:103.38438424159914, lat:34.72021963458613}, true); 
+            map.location({lon:106.80708598212466, lat:-6.2376237463296205}, true); 
             map.Overlays.add(marker1);
+            map.Overlays.add(marker2);
         }
   
     </script>
