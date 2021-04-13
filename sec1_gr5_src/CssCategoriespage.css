@@ -131,6 +131,8 @@ nav a {
     font-size: 45px;
     margin-top: 30px;
     margin-bottom: 20px;
+    
+    
 }
 
 button{
@@ -177,9 +179,7 @@ button{
     font-size: 16px;
 }
 
-#branch1:hover{
-    background-color: yellow;
-}
+
 
 footer {
     position: fixed;
@@ -222,4 +222,30 @@ footer {
     .rightnav2{
         display: none;
     }
+}
+
+.map-responsive{
+
+    overflow:hidden;
+
+    padding-bottom:56.25%;
+
+    position:relative;
+
+    height:0;
+
+}
+
+.map-responsive iframe{
+
+    left:0;
+
+    top:0;
+
+    height:100%;
+
+    width:100%;
+
+    position:absolute;
+
 }

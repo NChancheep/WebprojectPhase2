@@ -55,3 +55,73 @@ function menu4(){
         branchRef.style.display = "block";
     }
 }
+function branchLoc1(){
+    let showRef = document.getElementById("loc1");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc2(){
+    let showRef = document.getElementById("loc2");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc3(){
+    let showRef = document.getElementById("loc3");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc4(){
+    let showRef = document.getElementById("loc4");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc5(){
+    let showRef = document.getElementById("loc5");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc6(){
+    let showRef = document.getElementById("loc6");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
+function branchLoc7(){
+    let showRef = document.getElementById("loc7");
+    if (showRef.style.display == "none")
+    {
+        showRef.style.display = "block";
+    }
+    else{
+        showRef.style.display = "none"; 
+    }
+}
