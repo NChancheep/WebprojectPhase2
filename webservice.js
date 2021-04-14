@@ -21,11 +21,18 @@ router.use(bp.json());
 app.use('/public', express.static('sec1_gr5_src'));
 
 
+/*let dbConn = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'projectadmin',
+	password : '1234',
+	database : 'nodelogin'
+});*/
+
 let dbConn = mysql.createConnection({
-    host: 'localhost',
-    user: 'project2',
-    password: '1234',
-    database: 'project1_phase2_group5'
+	host     : process.env.MYSQL_HOST,
+	user     : process.env.MYSQL_USERNAME,
+	password : process.env.MYSQL_PASSWORD,
+	database : process.env.MYSQL_DATABASE
 });
 
 dbConn.connect((err) => {
@@ -40,33 +47,6 @@ app.use(session({
 }));
 app.use(bp.urlencoded({extended : true}));
 app.use(bp.json());
-
-/*app.post('/auth', function(request, response) {
-	var username = request.body.username;
-	var password = request.body.password;
-	if (username && password) {
-		dbConn.query('SELECT * FROM Login_Information WHERE username = ? AND password = ?', [username, password], function(error, results){
-			if (error) throw error;
-			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = username;
-				console.log(results);
-				console.log(sql);
-				return response.send({error:true, data:results.affectedRows, message: 'successfully.'});
-			} else {
-				request.session.loggedin = false;
-				request.session.username = null;
-				console.log(username);
-				console.log(password);
-				console.log(results);
-				console.log(sql);
-				return response.send({error:true,data:results[0],message:'Incorrect Username and/or Password!'});
-			}	
-        });
-	} else {
-		return response.send({error:true,data:results[0],message:'Please enter Username and Password!'});
-	}
-});*/
 
 app.get('/login', function (req, res) {
     let username = req.body.username;
@@ -84,14 +64,27 @@ app.get('/login', function (req, res) {
             message: 'Please provide password.'
         });
     }
-	dbConn.query('SELECT username FROM Login_Information WHERE username = ? AND password = ?', [username, password], function(error, results){
+	dbConn.query('SELECT * FROM LoginInformation WHERE username = ? AND password = ?', [username, password], function(error, results){
         if (error) throw error;
 		console.log(results);
-        return res.send({
-            error: false,
-            data: results[0],
-            message: 'User retrieved'
-        });
+		if (results.length > 0)
+		{
+			console.log(results);
+			return res.send({
+				error: false,
+				data: results[0],
+				message: 'User retrieved'
+			});
+		}
+        else
+		{
+			console.log(results);
+			return res.send({
+			error: true,
+			data: results[0],
+			message: 'ERROR'
+		});
+		}
     });
 });
 
