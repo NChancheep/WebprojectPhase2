@@ -753,3 +753,5 @@ INSERT INTO Onlines (`Order_id`, `Tax_invoice`, `Delivery_status`, `Date_of_orde
 (058, 1350, 'On the route', '2020-09-20 18:58:12', 'Konohagakure', 'Obito', 4288028),
 (059, 1020, 'Order confirmation', '2020-10-14 11:14:54', 'Konohagakure', 'Madara', 4288029),
 (060, 550, 'Done', '2020-04-13 16:45:46', 'Konohagakure', 'Shisui', 4288030);
+
+SELECT username FROM Login_Information WHERE username = 'JumpKM' AND password = '6288160'
