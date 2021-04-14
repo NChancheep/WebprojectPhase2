@@ -41,7 +41,7 @@ CREATE TABLE Login_Information
 -- Alter & drop for table `Login_Information`
 --
 
-ALTER TABLE LoginInformation
+ALTER TABLE Login_Information
   ADD PRIMARY KEY (`login_id`);
 
 -- ---------------------------------------------------------------------------------------
@@ -266,7 +266,7 @@ CREATE TABLE Onlines
 -- Dumping data for table `Login_Information`
 --
 
-INSERT INTO LoginInformation (`login_id`, `username`, `password`, `role`, `log`) VALUES
+INSERT INTO Login_Information (`login_id`, `username`, `password`, `role`, `log`) VALUES
 (0001, "apadij", "itcs212_1", "user", "Access-granted"),
 (0002, "kculialip", "itcs381_1", "user", "Access-granted"),
 (0003, "trahcihduw", "itcs212_2", "user", "Access-granted"),
@@ -305,7 +305,7 @@ INSERT INTO Admin_Information (`admin_id`, `firstname`, `lastname`, `address`, `
 --
 
 INSERT INTO Branch (`Branch_id`, `Contact_No`, `Location`, `Name`) VALUES
-(01, '025-264-395', 'Siam Center', 'Greyhound Cafe'),
+(01, '025-264-395', 'SiamCenter', 'Greyhound Cafe'),
 (02, '023-364-064', 'ICONSIAM', 'Greyhound Cafe'),
 (03, '028-112-108', 'Emquartier', 'Greyhound Cafe'),
 (04, '021-382-895', 'Centralplaza Pinklao', 'Greyhound Cafe'),
@@ -315,6 +315,7 @@ INSERT INTO Branch (`Branch_id`, `Contact_No`, `Location`, `Name`) VALUES
 (08, '027-704-141', 'Mega Bangna', 'Greyhound Cafe'),
 (09, '024-474-191', 'The Promenada', 'Greyhound Cafe'),
 (10, '029-061-440', 'Phaholyothin (Ari)', 'Greyhound Cafe');
+
 
 --
 -- Dumping data for table `Order`
@@ -754,4 +755,201 @@ INSERT INTO Onlines (`Order_id`, `Tax_invoice`, `Delivery_status`, `Date_of_orde
 (059, 1020, 'Order confirmation', '2020-10-14 11:14:54', 'Konohagakure', 'Madara', 4288029),
 (060, 550, 'Done', '2020-04-13 16:45:46', 'Konohagakure', 'Shisui', 4288030);
 
-SELECT * FROM LoginInformation WHERE username = 'JumpKM' AND password = '6288160'
+CREATE TABLE Food
+(
+  `Food_Name` longtext DEFAULT NULL,
+  `Food_Price` int(20) NOT NULL
+);
+CREATE TABLE Dessert
+(
+  `Dessert_Name` longtext DEFAULT NULL,
+  `Dessert_Price` int(20) NOT NULL
+);
+CREATE TABLE Drink
+(
+  `Drink_Name` longtext DEFAULT NULL,
+  `Drink_Price` int(20) NOT NULL
+);
+
+
+INSERT INTO Food (`Food_Name`, `Food_Price`) VALUES
+('Garden Vegetable Soup', 160),
+('Italian Style Clam And Mussel Soup', 260),
+('Prawn Bisque with Fresh Cream', 200),
+('Mushroom Cream Soup', 180),
+('French Onion Soup', 160),
+('Sandwich in a Bowl', 250),
+('Grilled Vegetable Salad with Pesto Sauce', 180),
+('Fresh Lasagna Salad',180),
+('Fillet Steak Salad', 340),
+('Seared Scallop Salad',490),
+('Soft-Shell Crab Salad', 360),
+('Fisherman Salad',380),
+('Fresh Honeydew Melon and Parma Ham Salad', 260),
+('Grilled Pumpkin and Tofu Salad', 240),
+('Caesar Salad with Country Style Dressing', 240),
+('Calamari Fritti', 180),
+('Homemade Paté with Cognac and Fresh Green Peppercorns',200),
+('Tartine Dip',280),
+('Oceanic Gang',450),
+('Italian Bruchetta (Mushroom topping / Tomato topping)',160),
+('Baked Spinach with Cheese and Pork Sausage',280),
+('Crispy Ravioli with Salsa',180),
+('French Fries with Aïoli Dip',110),
+('Thai Steak with Spicy Thai Hot Sauce', 360),
+('Salmon Sashimi in Spicy Hot Sauce',240),
+('Greyhound Famous Fried Chicken Wings',160),
+('Street Style Grilled Lamb on Skewer',380),
+('Waterfall Mushroom and Tofu',180),
+('Pomelo Salad',240),
+('Yum Japanese Seaweed with Harusame Glass Noodle',230),
+('Fresh Vietnamese Spring Rolls',160),
+('Fried Vietnamese Spring Rolls',180),
+('Yum Thai Steak Salad (Beef / Pork)',210),
+('Fried Salmon Toro with Dip',240),
+('Som-Tum Salad with Black Crab and Japanese Soybeans',200),
+('Hot and Spicy Beef or Pork Balls with Crispy Celery',160),
+('Crispy Sweet Corn with Crab Meat',260),
+('Ham and Cheese Grill',240),
+('Pita Pizza Italian Sausage',280),
+('Buffalo Burger',320),
+('Super Elvis Burger',420),
+('Elvis Burger',280),
+('Crab Cannelloni',340),
+('Spaghetti Vongole',260),
+('Penne with Spicy Pesto Sauce',280),
+('Fettuccini with Shrimp and Mushroom Cream Sauce',300),
+('Fettuccini with Grilled Vegetables in Pesto Sauce',220),
+('Fermented Pork Rigatoni',240),
+('Fettuccini with Imported Seared Scallops, Asparagus in Light Pesto Cream Sauce',450),
+('Spaghetti Carbonara in Light Cream Sauce',280),
+('Spaghetti with Dried Salty Fish',250),
+('Spaghetti with Italian Pork Sausage',260),
+('Spaghetti with Crab Meat in Prawn Cream Sauce',300),
+('Spicy Spaghetti Thai Style',260),
+('Spaghetti with Thai Anchovy',230),
+('Spaghetti Olio with Bacon',280),
+('Spaghetti with Corned Beef and Fresh Chili',280),
+('Complicated Noodle',220),
+('Mee-Sua Noodle',170),
+('Tokyo Soba180.-Noodle in Pork Stew',160),
+('Phad Thai with Fresh Shrimp',240),
+('Wok-Fried Rice Noodle with Chicken and Dried Squid',180),
+('Noodle with Braised Beef (or pork) – Dry',180),
+('Noodle with Braised Beef (or pork) – Soup',180),
+('Miss Saigon',200),
+('Fried Noodle with Sea Bass',240),
+('Pork Salad Noodle',180),
+('Beer-Battered Fish and Chips',320),
+('Grilled Salmon Steak on Green Bed',360),
+('Simple Grilled Sea Bass',450),
+('Fried Rice with Dried Beef',200),
+('Kao Nam Prik Pla Tu',240),
+('Hainanese Chicken and Rice',200),
+('Fried Rice with Dried Salty Fish',220),
+('Egg and Bacon Fried Rice',200),
+('Fried Rice with Shrimp Paste',230),
+('Fried Tons of Crab Meat with Rice',490),
+('Chilli Paste Fried Rice with Shrimp',280),
+('Spicy Fried Salmon with Holy Basil on Rice',300),
+('Grilled Pumpkin and Tofu Salad',240),
+('Fresh Lasagna Salad',180),
+('Grilled Vegetable Salad with Pesto Sauce',180),
+('Vegetarian Tokyo Soba',160),
+('Waterfall Mushroom and Tofu',180),
+('Crispy Vegetarian Ravioli',160),
+('Baked Spinach with Cheese',220),
+('Vegetarian Phad Thai',150),
+('Vegetarian Mixed Mushroom Spaghetti',220),
+('Fettuccini with Grilled Vegetables in Pesto Sauce',220),
+('Spicy Spaghetti Vegetarian',200);
+
+INSERT INTO Drink (`Drink_Name`, `Drink_Price`) VALUES
+('Iced Lemon Tea',100),
+('Iced Tea',100),
+('Iced Tea with Milk',100),
+('Frosty Lemon Tea',100),
+('Iced Latte',130),
+('Iced Americano',120),
+('Iced Cappuccino',130),
+('Frosty Cappuccino',140),
+('Iced Cocoa',100),
+('Frosty Choco',110),
+('Espresso Frappe',140),
+('Iced Mocha',140),
+('Mocha Frappe',140),
+('Hot Milk',50),
+('Hot Cocoa',100),
+('Hot Lemonade',100),
+('Americano',105),
+('Decaf Americano',85),
+('Café Latte',95),
+('Decaf Caffe Latte',95),
+('Cappuccino',120),
+('Decaf Cappuccino',95),
+('Macchiato',110),
+('Decaf-Macchiato',95),
+('Espresso-single',95),
+('Decaf Espresso-Single',85),
+('Espresso-Double',110),
+('Decaf Espresso-Double',100),
+('Tea (Chamomile)',85),
+('Tea (Peppermint)',85),
+('Tea (Earl Grey)',85),
+('Tea (Darjeeling)',85),
+('Tea (English Breakfast)',85),
+('Japanese Green Tea',90),
+('Japanese Green Tea with Roasted Rice',90),
+('Lychee Shake',100),
+('Banana Shake',100),
+('Watermelon Shake',100),
+('Strawberry Shake',120),
+('Fresh Orange Juice / Shake',120),
+('Pineapple Juice / Shake',100),
+('Apple Juice / Shake',100),
+('Lime Juice / Shake / Soda',100),
+('Mixed Fruit Punch',100),
+('Mixed Fruit Punch Shake',100),
+('Coconut Shake',120),
+('Chinese Plum & Sprite Float',130),
+('Bubble Sour',130),
+('Espresso Float',130),
+('Citrus Soda Float',130),
+('Cherry Soda Float',130),
+('Thai Tea Granita',120),
+('Yok Lor Granita',120),
+('Nom Yen Granita',120),
+('Pick You Up (Grape Fruit, Pineapple, Banana)',130),
+('Fruity Shaky Yoghurt',130),
+('Innocent Voyage (Orange, Grape Fruit, Pineapple)',130),
+('Passion Fashion (Passion Fruit, Pineapple, Lime Juice, Mint Syrup)',130),
+('Pink Cooler (Watermelon, Orange, Pineapple)',130),
+('Pink Journey (Strawberry, Apple Juice, Lime Juice)',130),
+('Green Mellow ( Green Apple, Kiwi, Mint Syrup)',130);
+
+INSERT INTO Dessert (`Dessert_Name`, `Dessert_Price`) VALUES
+('Happy Toast',120),
+('Crepe Suzette',90),
+('Crepe Suzette with ice cream',130),
+('Crepe Mix Fruit (banana, blueberry, peach) with ice cream',130),
+('Crepe Mix Fruit (banana, blueberry, peach)',90),
+('Fresh Made Apple Crumble with ice-cream',180),
+('Sea Salt Caramel Chocolate with Vanilla Cream',230),
+('Mixed Berries Crepe Cake',200),
+('Chocolate Banana Crepe ',130),
+('Blueberry Cheesecake',140),
+('Walnut Blondie (+ Ice Cream)',160),
+('Banoffee',160),
+('Young Coconut Crepe Cake',200),
+('Sakoo Piek',120),
+('Tub Tim Krob Greyhound Style',120),
+('Chow Kuay',65),
+('Lod Chong Singapore',100),
+('Chum Cham size ',195),
+('Temple Fair size ',195),
+('Chocolate Lover size ',195),
+('Mixed Berries size ',195),
+('Banana Choc size ',195),
+('Sticky Rice Mango size', 160);
+
+

@@ -64,7 +64,7 @@ app.get('/login', function (req, res) {
             message: 'Please provide password.'
         });
     }
-	dbConn.query('SELECT * FROM LoginInformation WHERE username = ? AND password = ?', [username, password], function(error, results){
+	dbConn.query('SELECT * FROM Login_Information WHERE username = ? AND password = ?', [username, password], function(error, results){
         if (error) throw error;
 		console.log(results);
 		if (results.length > 0)
