@@ -12,6 +12,8 @@ var path = require('path');
 require('dotenv').config();
 const port = 3030;
 
+app.listen(port, () => console.log(`listening on port ${port}!`));
+
 app.use("/", router);
 router.use(bp.json());
 
@@ -19,11 +21,18 @@ router.use(bp.json());
 app.use('/public', express.static('sec1_gr5_src'));
 
 
+/*let dbConn = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'projectadmin',
+	password : '1234',
+	database : 'nodelogin'
+});*/
+
 let dbConn = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+	host     : process.env.MYSQL_HOST,
+	user     : process.env.MYSQL_USERNAME,
+	password : process.env.MYSQL_PASSWORD,
+	database : process.env.MYSQL_DATABASE
 });
 
 dbConn.connect((err) => {
@@ -31,5 +40,51 @@ dbConn.connect((err) => {
     console.log("Database connected");
 })
 
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+app.use(bp.urlencoded({extended : true}));
+app.use(bp.json());
 
-app.listen(port, () => console.log(`listening on port ${port}!`));
+app.get('/login', function (req, res) {
+    let username = req.body.username;
+	let password = req.body.password;
+	console.log(username, password)
+    if (!username) {
+        return res.status(400).send({
+            error: true,
+            message: 'Please provide username.'
+        });
+    }
+	if (!password) {
+        return res.status(400).send({
+            error: true,
+            message: 'Please provide password.'
+        });
+    }
+	dbConn.query('SELECT * FROM LoginInformation WHERE username = ? AND password = ?', [username, password], function(error, results){
+        if (error) throw error;
+		console.log(results);
+		if (results.length > 0)
+		{
+			console.log(results);
+			return res.send({
+				error: false,
+				data: results[0],
+				message: 'User retrieved'
+			});
+		}
+        else
+		{
+			console.log(results);
+			return res.send({
+			error: true,
+			data: results[0],
+			message: 'ERROR'
+		});
+		}
+    });
+});
+

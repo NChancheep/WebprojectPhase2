@@ -41,7 +41,7 @@ CREATE TABLE Login_Information
 -- Alter & drop for table `Login_Information`
 --
 
-ALTER TABLE Login_Information
+ALTER TABLE LoginInformation
   ADD PRIMARY KEY (`login_id`);
 
 -- ---------------------------------------------------------------------------------------
@@ -266,7 +266,7 @@ CREATE TABLE Onlines
 -- Dumping data for table `Login_Information`
 --
 
-INSERT INTO Login_Information (`login_id`, `username`, `password`, `role`, `log`) VALUES
+INSERT INTO LoginInformation (`login_id`, `username`, `password`, `role`, `log`) VALUES
 (0001, "apadij", "itcs212_1", "user", "Access-granted"),
 (0002, "kculialip", "itcs381_1", "user", "Access-granted"),
 (0003, "trahcihduw", "itcs212_2", "user", "Access-granted"),
@@ -753,3 +753,5 @@ INSERT INTO Onlines (`Order_id`, `Tax_invoice`, `Delivery_status`, `Date_of_orde
 (058, 1350, 'On the route', '2020-09-20 18:58:12', 'Konohagakure', 'Obito', 4288028),
 (059, 1020, 'Order confirmation', '2020-10-14 11:14:54', 'Konohagakure', 'Madara', 4288029),
 (060, 550, 'Done', '2020-04-13 16:45:46', 'Konohagakure', 'Shisui', 4288030);
+
+SELECT * FROM LoginInformation WHERE username = 'JumpKM' AND password = '6288160'
