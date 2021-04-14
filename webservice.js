@@ -20,14 +20,6 @@ router.use(bp.json());
 // Setting up the public directory
 app.use('/public', express.static('sec1_gr5_src'));
 
-
-/*let dbConn = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'projectadmin',
-	password : '1234',
-	database : 'nodelogin'
-});*/
-
 let dbConn = mysql.createConnection({
 	host     : process.env.MYSQL_HOST,
 	user     : process.env.MYSQL_USERNAME,
@@ -48,10 +40,13 @@ app.use(session({
 app.use(bp.urlencoded({extended : true}));
 app.use(bp.json());
 
-app.get('/login', function (req, res) {
-    let username = req.body.username;
-	let password = req.body.password;
-	console.log(username, password)
+//apadij
+//itcs212_1
+app.post('/login', function (req, res) {
+    let username = req.body.info.username;
+	let password = req.body.info.password;
+	console.log(req.body.info);
+	console.log(username, password);
     if (!username) {
         return res.status(400).send({
             error: true,
@@ -66,7 +61,6 @@ app.get('/login', function (req, res) {
     }
 	dbConn.query('SELECT * FROM Login_Information WHERE username = ? AND password = ?', [username, password], function(error, results){
         if (error) throw error;
-		console.log(results);
 		if (results.length > 0)
 		{
 			console.log(results);

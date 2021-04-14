@@ -1,17 +1,23 @@
-async function userLogin(user, pass) {
-    const res = await (await fetch("http://localhost:3030/", {
-        method: 'GET'
-    })).json();
-    console.log(res);
-    let student = res.data;
-}
 
-async function selectById(id) {
-    const res = await (await fetch("http://localhost:3030/login/" + id, {
-        method: 'GET'
-    })).json();
+async function userLogin(username ,password) {
+    let info = {
+        username: username,
+        password: password
+    }
+    console.log(info);
+    const res = await fetch("http://localhost:3030/login/", { method: "post", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(info) })
+    // const res = await (await fetch("", {
+    //     method: 'POST',
+    //     headers: {
+            
+    //     },
+    //     body: JSON.stringify({info: info})
+    // })).json();
+    let user = await res.data;
     console.log(res);
-    let user = res.data;
-    document.getElementById("byId").innerHTML =
-        `[Name: ${user.Firstname} ${user.Lastname} | Date of Birth: ${student.DOB.substring(0,10)} | Mobile: ${student.Mobilephone}]`;
+    console.log(res.data);
+    console.log(user);
+   
 }
+//apadij
+//itcs212_1
