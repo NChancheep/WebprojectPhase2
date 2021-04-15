@@ -33,9 +33,10 @@
             document.getElementById("sidenav").style.width = "0";
         }
     </script>
+    <script src="JsAccountpage.js"></script>
 </head>
 
-<body>
+<body onload="myFunction()">
     <main class="container-sd">
         <header class="row">
             <div class="Allnav">
@@ -69,7 +70,7 @@
                 </nav>
             </div>
         </header>
-
+        
         <section class="page-content page-container" id="page-content" style="margin-left: 20%; margin-top: 10%;">
             <div class="padding">
                 <div class="row container d-flex justify-content-center">
@@ -79,9 +80,9 @@
                                 <div class="col-sm-4 bg user-profile">
                                     <div class="card-block text-center text-white">
                                         <div class="m-b-25"> 
-                                            <img src="./images/ray.JPG" class="img-radius" style="width: 50%; border-radius: 50%;" alt="User-Profile-Image"> 
+                                            <!-- <img src="./images/ray.JPG" class="img-radius" style="width: 50%; border-radius: 50%;" alt="User-Profile-Image">  -->
                                         </div>
-                                        <h3 class="f-w-600">Patadon Ray</h3>
+                                        <h3 class="f-w-600" id="fNameOut"></h3>
                                         <h6>USER</h6>
                                     </div>
                                 </div>
@@ -90,36 +91,38 @@
                                         <h3 class="m-b-20 p-b-5 f-w-600">Information</h3>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <p class="m-b-10 f-w-600">Email</p>
-                                                <h6 class="Mail f-w-400">Rayya@gmail.com</h6>
+                                                <p class="m-b-10 f-w-600" id="EmailOut">Email</p>
+                                                <div onload="myFunction()" id="demo"></div>
+                                                <!-- <h6 class="Mail f-w-400">Rayya@gmail.com</h6> -->
                                             </div> 
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">Phone</p>
-                                                <h6 class="Phone f-w-400">0875761153</h6>
+                                                <!-- <h6 class="Phone f-w-400">0875761153</h6> -->
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">Recent</p>
-                                                <h6 class="Recent f-w-400">Central Pinklao</h6>
+                                                <!-- <h6 class="Recent f-w-400">Central Pinklao</h6> -->
                                             </div>
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">National</p>
-                                                <h6 class="Nation f-w-400">Thailand</h6>
+                                                <!-- <h6 class="Nation f-w-400">Thailand</h6> -->
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">Most visit</p>
-                                                <h6 class="Visit f-w-400">Icon Siam</h6>
+                                                <!-- <h6 class="Visit f-w-400">Icon Siam</h6> -->
                                             </div>
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">Favorite branch</p>
-                                                <h6 class="Fav f-w-400">Icon Siam</h6>
+                                                <!-- <h6 class="Fav f-w-400">Icon Siam</h6> -->
                                             </div>
-                                        </div>
+                                        </div> -->
                                         </ul>
                                         <input type="button" class="button" onClick="location.href='HtmlReservepage.html'" value='Reserve'>
+                                       
                                     </div>
                                 </div>
                             </div>
