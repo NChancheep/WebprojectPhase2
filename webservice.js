@@ -43,8 +43,8 @@ app.use(bp.json());
 //apadij
 //itcs212_1
 app.post('/login', function (req, res) {
-    let username = req.body.info.username;
-	let password = req.body.info.password;
+    let username = req.body.username;
+	let password = req.body.password;
 	console.log(req.body.info);
 	console.log(username, password);
     if (!username) {
@@ -64,6 +64,7 @@ app.post('/login', function (req, res) {
 		if (results.length > 0)
 		{
 			console.log(results);
+			console.log();
 			return res.send({
 				error: false,
 				data: results[0],

@@ -1,11 +1,12 @@
 
 async function userLogin(username ,password) {
+    // event.preventDefault();
     let info = {
         username: username,
         password: password
     }
-    console.log(info);
-    const res = await fetch("http://localhost:3030/login/", { method: "post", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(info) })
+    // console.log(info);
+    //const res = await fetch("http://localhost:3030/login/", { method: "post", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(info) })
     // const res = await (await fetch("", {
     //     method: 'POST',
     //     headers: {
@@ -13,10 +14,14 @@ async function userLogin(username ,password) {
     //     },
     //     body: JSON.stringify({info: info})
     // })).json();
-    let user = await res.data;
+    const res = await (await fetch("http://localhost:3030/login/", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(info) 
+    })).json();
     console.log(res);
-    console.log(res.data);
-    console.log(user);
+    let student = res.data;
+    
    
 }
 //apadij
