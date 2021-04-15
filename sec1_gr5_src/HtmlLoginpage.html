@@ -20,7 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <title>
         Login
     </title>
@@ -34,7 +36,7 @@
             document.getElementById("sidenav").style.width = "0";
         }
 
-        function adminSwitch(){
+        function adminSwitch() {
             let form1Ref = document.getElementById("form1");
             let form2Ref = document.getElementById("form2");
             form1Ref.style.display = "none";
@@ -43,7 +45,7 @@
             }
         }
 
-        function userSwitch(){
+        function userSwitch() {
             let form1Ref = document.getElementById("form1");
             let form2Ref = document.getElementById("form2");
             form2Ref.style.display = "none";
@@ -92,12 +94,13 @@
         <section class="login-page">
             <div class="form" id="form1">
                 <h2 class="Login">Login</h2>
-                
-                    <input type="text" id="username" required placeholder="username" />
-                    <input type="password" id="password" required placeholder="password" />
-                    <button onclick="userLogin(document.getElementById('username').value,document.getElementById('password').value)">Submit</button> 
-                    <!-- <button type="button" onClick="location.href='HtmlAccountpage.html'">Login</button> -->
-               
+
+                <input type="text" id="username" required placeholder="username" />
+                <input type="password" id="password" required placeholder="password" />
+                <button
+                    onclick="userLogin(document.getElementById('username').value,document.getElementById('password').value)">Submit</button>
+                <!-- <button type="button" onClick="location.href='HtmlAccountpage.html'">Login</button> -->
+
                 <div class="CreateAndForgot">
                     <a href="HtmlRegistrationpage.html">
                         <p class="create">Create an account</p>

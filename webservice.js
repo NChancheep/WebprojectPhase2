@@ -21,15 +21,15 @@ router.use(bp.json());
 app.use('/public', express.static('sec1_gr5_src'));
 
 let dbConn = mysql.createConnection({
-	host     : process.env.MYSQL_HOST,
-	user     : process.env.MYSQL_USERNAME,
-	password : process.env.MYSQL_PASSWORD,
-	database : process.env.MYSQL_DATABASE
+	host: process.env.MYSQL_HOST,
+	user: process.env.MYSQL_USERNAME,
+	password: process.env.MYSQL_PASSWORD,
+	database: process.env.MYSQL_DATABASE
 });
 
 dbConn.connect((err) => {
-    if(err) throw err;
-    console.log("Database connected");
+	if (err) throw err;
+	console.log("Database connected");
 })
 
 app.use(session({
@@ -37,32 +37,33 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-app.use(bp.urlencoded({extended : true}));
+app.use(bp.urlencoded({
+	extended: true
+}));
 app.use(bp.json());
 
 //apadij
 //itcs212_1
 app.post('/login', function (req, res) {
-    let username = req.body.username;
+	let username = req.body.username;
 	let password = req.body.password;
 	console.log(req.body.info);
 	console.log(username, password);
-    if (!username) {
-        return res.status(400).send({
-            error: true,
-            message: 'Please provide username.'
-        });
-    }
+	if (!username) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide username.'
+		});
+	}
 	if (!password) {
-        return res.status(400).send({
-            error: true,
-            message: 'Please provide password.'
-        });
-    }
-	dbConn.query('SELECT * FROM Login_Information WHERE username = ? AND password = ?', [username, password], function(error, results){
-        if (error) throw error;
-		if (results.length > 0)
-		{
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide password.'
+		});
+	}
+	dbConn.query('SELECT * FROM Login_Information WHERE username = ? AND password = ?', [username, password], function (error, results) {
+		if (error) throw error;
+		if (results.length > 0) {
 			console.log(results);
 			console.log();
 			return res.send({
@@ -70,16 +71,13 @@ app.post('/login', function (req, res) {
 				data: results[0],
 				message: 'User retrieved'
 			});
-		}
-        else
-		{
+		} else {
 			console.log(results);
 			return res.send({
-			error: true,
-			data: results[0],
-			message: 'ERROR'
-		});
+				error: true,
+				data: results[0],
+				message: 'ERROR'
+			});
 		}
-    });
+	});
 });
-
