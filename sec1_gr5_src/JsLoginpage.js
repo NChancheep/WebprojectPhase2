@@ -1,5 +1,5 @@
-var keepdata; 
-
+var keepdata1; 
+var keepdata2; 
 async function userLogin(username, password) {
     // event.preventDefault();
     let info = {
@@ -20,7 +20,7 @@ async function userLogin(username, password) {
     }
     else{
         alert("Welcome back "+res.data.firstname+" "+res.data.lastname);
-        location.replace("");
+        location.replace("HtmlAccountpage.html");
     }
 }
 
@@ -44,6 +44,7 @@ async function adminLogin(username, password) {
     }
     else{
         alert("Welcome back "+res.data.firstname+" "+res.data.lastname);
-        location.replace("");
+        location.replace("HtmlAdminpage.html");
     }
 }
+
