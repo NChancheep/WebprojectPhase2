@@ -33,8 +33,8 @@ CREATE TABLE Login_Information
   `login_id` int(4) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL,
-  `log` varchar(100) DEFAULT NULL,
+  `role` varchar(20) DEFAULT 'user',
+  `log` varchar(100) DEFAULT 'Access-granted',
   -- Add form User_infor 
   `firstname` varchar(20) DEFAULT NULL,
   `lastname` varchar(20) DEFAULT NULL,
@@ -283,12 +283,12 @@ CREATE TABLE Onlines
 -- Dumping data for table `Login_Information`
 --
 
-INSERT INTO Login_Information ( `username`, `password`, `role`, `log`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`) VALUES
-("apadij", "itcs212_1", "user", "Access-granted", "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th"),
-("kculialip", "itcs381_1", "user", "Access-granted", "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th"),
-("trahcihduw", "itcs212_2", "user", "Access-granted", "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th"),
-("tisnoob", "itcs323_1", "user", "Access-granted", "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th"),
-("naugnasdus", "itcs343_1", "user", "Access-granted", "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th");
+INSERT INTO Login_Information ( `username`, `password`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`) VALUES
+("apadij", "itcs212_1", "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th"),
+("kculialip", "itcs381_1", "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th"),
+("trahcihduw", "itcs212_2", "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th"),
+("tisnoob", "itcs323_1", "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th"),
+("naugnasdus", "itcs343_1", "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th");
 
 
 --

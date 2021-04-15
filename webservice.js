@@ -120,3 +120,42 @@ app.post('/adminlogin', function (req, res) {
 	});
 });
 
+
+app.post('/register', function (req, res, next) {
+
+	
+	inputData = {
+		username: req.body.username,
+		password: req.body.password,
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		address: req.body.address,
+		age: req.body.age,
+		email: req.body.email
+	}
+	console.log(inputData);
+	// check unique email address
+	var sql = 'SELECT * FROM Login_Information WHERE email =?';
+	dbConn.query(sql, [inputData.email], function (err, results) {
+		if (err) throw err
+		if (results.length > 1) {
+			//var msg = inputData.email_address + "was already exist";
+			return res.send({
+				error: false,
+				message: inputData.email + 'was already exist'
+			});
+		}  else {
+			// save users data into database
+			var sql = 'INSERT INTO Login_Information SET ?';
+			dbConn.query(sql, inputData, function (err, results) {
+				if (err) throw err;
+				return res.send({
+					error: false,
+					data: results.affectedRows,
+					message: 'Your are successfully registered.'
+				}); 
+			});
+			//var msg = "Your are successfully registered";
+		}
+	})
+});
