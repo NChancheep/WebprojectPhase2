@@ -44,7 +44,7 @@ app.use(bp.json());
 
 //apadij
 //itcs212_1
-app.post('/login', function (req, res) {
+app.post('/userlogin', function (req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
 	console.log(req.body.info);
@@ -81,3 +81,42 @@ app.post('/login', function (req, res) {
 		}
 	});
 });
+
+app.post('/adminlogin', function (req, res) {
+	let username = req.body.username;
+	let password = req.body.password;
+	console.log(req.body.info);
+	console.log(username, password);
+	if (!username) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide username.'
+		});
+	}
+	if (!password) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide password.'
+		});
+	}
+	dbConn.query('SELECT * FROM Admin_Information WHERE username = ? AND password = ?', [username, password], function (error, results) {
+		if (error) throw error;
+		if (results.length > 0) {
+			console.log(results);
+			console.log();
+			return res.send({
+				error: false,
+				data: results[0],
+				message: 'User retrieved'
+			});
+		} else {
+			console.log(results);
+			return res.send({
+				error: true,
+				data: results[0],
+				message: 'ERROR'
+			});
+		}
+	});
+});
+
