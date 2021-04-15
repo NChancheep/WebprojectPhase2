@@ -22,7 +22,7 @@ async function regis(username, password, firstname, lastname, address, age, emai
         alert("Username or password Incorrect");
     }
     else{
-        //alert("Welcome "+res.data.firstname+" "+res.data.lastname);
-        //location.replace("HtmlLoginpage.html");
+        alert("Welcome "+res.data.firstname+" "+res.data.lastname);
+        location.replace("HtmlLoginpage.html");
     }
 }
