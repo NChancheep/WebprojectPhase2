@@ -1,5 +1,3 @@
-var keepdata1; 
-var keepdata2; 
 async function userLogin(username, password) {
     // event.preventDefault();
     let info = {
@@ -14,7 +12,10 @@ async function userLogin(username, password) {
         body: JSON.stringify(info)
     })).json();
     console.log(res);
-    keepdata = res;
+    localStorage.setItem("firstname", res.data.firstname);
+    localStorage.setItem("lastname", res.data.lastname);
+    localStorage.setItem("age", res.data.age);
+    localStorage.setItem("email", res.data.email);
     if (res.error) {
         alert("Username or password Incorrect");
     }
@@ -47,4 +48,5 @@ async function adminLogin(username, password) {
         location.replace("HtmlAdminpage.html");
     }
 }
+
 
