@@ -30,19 +30,31 @@ USE `project1_phase2_group5`;
 
 CREATE TABLE Login_Information
 (
-  `login_id` int(4) NOT NULL,
+  `login_id` int(4) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   `role` varchar(20) DEFAULT NULL,
-  `log` varchar(100) DEFAULT NULL
+  `log` varchar(100) DEFAULT NULL,
+  -- Add form User_infor 
+  `firstname` varchar(20) DEFAULT NULL,
+  `lastname` varchar(20) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `age` int(2) DEFAULT NULL,
+  `preferences` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (login_id)
 );
 
 --
 -- Alter & drop for table `Login_Information`
 --
 
-ALTER TABLE Login_Information
-  ADD PRIMARY KEY (`login_id`);
+-- ALTER TABLE Login_Information
+--  ADD PRIMARY KEY (`login_id`);
+  
+
+-- ALTER TABLE Login_Information CHANGE 'login_id' NOT NULL AUTO_INCREMENT, auto_increment=6;
+
 
 -- ---------------------------------------------------------------------------------------
 
@@ -50,25 +62,25 @@ ALTER TABLE Login_Information
 -- Table structure for table `User_Information`
 --
 
-CREATE TABLE User_Information
-(
-  `user_id` int(5) NOT NULL,
-  `firstname` varchar(20) DEFAULT NULL,
-  `lastname` varchar(20) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
-  `age` int(2) DEFAULT NULL,
-  `preferences` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `login_id` int(4) NOT NULL,
-  CONSTRAINT FK_UserLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
-);
+-- CREATE TABLE User_Information
+-- (
+--   `user_id` int(5) NOT NULL  AUTO_INCREMENT,
+--   `firstname` varchar(20) DEFAULT NULL,
+--   `lastname` varchar(20) DEFAULT NULL,
+--   `address` varchar(100) DEFAULT NULL,
+--   `age` int(2) DEFAULT NULL,
+--   `preferences` varchar(50) DEFAULT NULL,
+--   `email` varchar(50) DEFAULT NULL,
+--   `login_id` int(4) NOT NULL,
+--   CONSTRAINT FK_UserLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
+-- );
 
 --
 -- Alter & drop for table `User_Information`
 --
 
-ALTER TABLE User_Information
-  ADD PRIMARY KEY (`user_id`);
+-- ALTER TABLE User_Information
+--   ADD PRIMARY KEY (`user_id`);
   
 -- ---------------------------------------------------------------------------------------
 
@@ -79,15 +91,20 @@ ALTER TABLE User_Information
 CREATE TABLE Admin_Information
 (
   `admin_id` int(6) NOT NULL,
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  `log` varchar(100) DEFAULT NULL,
+  -- Add form User_infor 
   `firstname` varchar(20) DEFAULT NULL,
   `lastname` varchar(20) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `age` int(2) DEFAULT NULL,
   `preferences` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `login_id` int(4) NOT NULL,
-  CONSTRAINT FK_AdminLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
+  `email` varchar(50) DEFAULT NULL
 );
+
+
 
 --
 -- Alter & drop for table `Admin_Information`
@@ -266,39 +283,35 @@ CREATE TABLE Onlines
 -- Dumping data for table `Login_Information`
 --
 
-INSERT INTO Login_Information (`login_id`, `username`, `password`, `role`, `log`) VALUES
-(0001, "apadij", "itcs212_1", "user", "Access-granted"),
-(0002, "kculialip", "itcs381_1", "user", "Access-granted"),
-(0003, "trahcihduw", "itcs212_2", "user", "Access-granted"),
-(0004, "tisnoob", "itcs323_1", "user", "Access-granted"),
-(0005, "naugnasdus", "itcs343_1", "user", "Access-granted"),
-(0073, "maxnacata", "6288073", "admin", "Access-granted"),
-(0090, "IMVISCaRaMel", "6288090", "admin", "Access-granted"),
-(0092, "SxYuki", "6288092", "admin", "Access-granted"),
-(0160, "JumpKM", "6288160", "admin", "Access-granted"),
-(2512, "LeviAKM", "2512820", "admin", "Access-granted");
+INSERT INTO Login_Information ( `username`, `password`, `role`, `log`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`) VALUES
+("apadij", "itcs212_1", "user", "Access-granted", "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th"),
+("kculialip", "itcs381_1", "user", "Access-granted", "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th"),
+("trahcihduw", "itcs212_2", "user", "Access-granted", "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th"),
+("tisnoob", "itcs323_1", "user", "Access-granted", "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th"),
+("naugnasdus", "itcs343_1", "user", "Access-granted", "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th");
+
 
 --
 -- Dumping data for table `User_Information`
 --
 
-INSERT INTO User_Information (`user_id`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
-(00001, "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th", 0001),
-(00002, "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th", 0002),
-(00003, "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th", 0003),
-(00004, "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th", 0004),
-(00005, "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th", 0005);
+-- INSERT INTO User_Information (`user_id`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
+-- (00001, "Jidapa", "Kraisangka", "MUICT", 30, "Not Spicy Food", "jidapa.kra@mahidol.ac.th", 0001),
+-- (00002, "Pilailuck", "Panphattarasap", "MUICT", 35, "Not Spicy Food", "pilailuck.pan@mahidol.ac.th", 0002),
+-- (00003, "Wudhichart", "Sawangphol", "MUICT", 40, "Not Spicy Food", "wudhichart.saw@mahidol.ac.th", 0003),
+-- (00004, "Boonsit", "Yimwadsana", "MUICT", 45, "Not Spicy Food", "boonsit.yim@mahidol.ac.th", 0004),
+-- (00005, "Sudsanguan", "Ngamsuriyaroj", "MUICT", 50, "Not Spicy Food", "sudsanguan.nga@mahidol.ac.th", 0005);
 
 --
 -- Dumping data for table `Admin_Information`
 --
 
-INSERT INTO Admin_Information (`admin_id`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`, `login_id`) VALUES
-(620073, "Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th", 0073),
-(620090, "Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th", 0090),
-(620092, "Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th", 0092),
-(620160, "Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th", 0160),
-(622512, "Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com", 2512);
+INSERT INTO Admin_Information (`admin_id`, `username`, `password`, `role`, `log`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`) VALUES
+(0001, "maxnacata", "6288073", "admin", "Access-granted", "Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th"),
+(0002, "IMVISCaRaMel", "6288090", "admin", "Access-granted", "Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th"),
+(0003, "SxYuki", "6288092", "admin", "Access-granted", "Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th"),
+(0004, "JumpKM", "6288160", "admin", "Access-granted", "Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th"),
+(0005, "LeviAKM", "2512820", "admin", "Access-granted", "Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com");
 
 --
 -- Dumping data for table `Branch`
@@ -951,5 +964,3 @@ INSERT INTO Dessert (`Dessert_Name`, `Dessert_Price`) VALUES
 ('Mixed Berries size ',195),
 ('Banana Choc size ',195),
 ('Sticky Rice Mango size', 160);
-
-
