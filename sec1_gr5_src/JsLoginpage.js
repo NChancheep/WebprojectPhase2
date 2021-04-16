@@ -16,6 +16,8 @@ async function userLogin(username, password) {
     localStorage.setItem("lastname", res.data.lastname);
     localStorage.setItem("age", res.data.age);
     localStorage.setItem("email", res.data.email);
+    localStorage.setItem("address", res.data.address);
+    localStorage.setItem("age", res.data.age);
     if (res.error) {
         alert("Username or password Incorrect");
     }
