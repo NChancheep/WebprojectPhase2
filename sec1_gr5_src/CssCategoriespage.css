@@ -71,31 +71,36 @@ nav a {
     font-size: 50px;
     margin-left: 50px;
 }
-.home1{
+
+.home1 {
     padding-right: 35px;
 }
-.mem1{
+
+.mem1 {
     padding-right: 0px;
 }
-.home2{
+
+.home2 {
     padding-right: 35px;
 }
-.mem2{
+
+.mem2 {
     padding-right: 0px;
 }
+
 .img-fluid {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
-  }
 
-#imgline{
+}
+
+#imgline {
     width: 100%;
     padding-top: 5%;
 }
 
-#imgline2{
+#imgline2 {
     width: 40%;
 }
 
@@ -109,37 +114,37 @@ nav a {
 }
 
 
-.navlist a{
-    color:black;
-    padding-top:5px;
+.navlist a {
+    color: black;
+    padding-top: 5px;
     padding-bottom: 14px;
     padding-left: 20px;
     padding-right: 20px;
     text-decoration: none;
 }
 
-.headerMenu{
+.headerMenu {
     font-family: 'Yellowtail', cursive;
     text-align: center;
     font-size: 45px;
     margin-bottom: 20px;
 }
 
-.headerCountry{
+.headerCountry {
     font-family: 'Yellowtail', cursive;
     text-align: center;
     font-size: 45px;
     margin-top: 30px;
     margin-bottom: 20px;
-    
-    
+
+
 }
 
-button{
+button {
     border: none;
     background: none;
-    color:black;
-    padding-top:5px;
+    color: black;
+    padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -179,20 +184,21 @@ button{
     font-size: 16px;
 }
 
-
-
 footer {
+    background-color: #000;
+    color: #FFFFFF;
+    font-size: .8em;
+    margin-top: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
     position: fixed;
-    padding: 10px 10px 0px 10px;
+    left: 0;
     bottom: 0;
     width: 100%;
-    /* Height of the footer*/
-    height: 40px;
-    background: rgba(196, 196, 196, 0.596);
 }
 
 @media screen and (max-width: 375px) {
-  
+
     .p {
         font-size: 14px;
     }
@@ -208,44 +214,45 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
-  
-    .rightnav1{
+
+    .rightnav1 {
         display: none;
     }
-    body { 
-        font-size: 2em; 
+
+    body {
+        font-size: 2em;
     }
 }
 
 @media screen and (min-width: 1025px) {
-    
-    .rightnav2{
+
+    .rightnav2 {
         display: none;
     }
 }
 
-.map-responsive{
+.map-responsive {
 
-    overflow:hidden;
+    overflow: hidden;
 
-    padding-bottom:56.25%;
+    padding-bottom: 56.25%;
 
-    position:relative;
+    position: relative;
 
-    height:0;
+    height: 0;
 
 }
 
-.map-responsive iframe{
+.map-responsive iframe {
 
-    left:0;
+    left: 0;
 
-    top:0;
+    top: 0;
 
-    height:100%;
+    height: 100%;
 
-    width:100%;
+    width: 100%;
 
-    position:absolute;
+    position: absolute;
 
 }
