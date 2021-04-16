@@ -177,46 +177,6 @@ CREATE TABLE Cash
   CONSTRAINT FK_payID2 FOREIGN KEY (Pay_id) REFERENCES Payment(Pay_id)
 );
 
---
--- Table structure for table `Onsite`
---
-
-CREATE TABLE Onsite
-(
-  `Order_id`  int NOT NULL,
-  `Table_No` int NOT NULL,
-  `Statuss` varchar(20) DEFAULT NULL,
-  `No_of_people` int DEFAULT NULL,
-  `Booking_Schedule` datetime NOT NULL,
-   CONSTRAINT FK_orderID3 FOREIGN KEY (Order_id) REFERENCES Orders(Order_id)
-);
-
---
--- Alter & add for table `Onsite`
---
-
-ALTER TABLE Onsite
-  ADD `WhenOrder` datetime NOT NULL,
-  ADD `Reserved` int NOT NULL;
-  
---
--- Table structure for table `Onlines`
---
-
-CREATE TABLE Onlines 
-(
-  `Order_id`  int NOT NULL,
-  `Tax_invoice` int NOT NULL,
-  `Delivery_status`  varchar(20) DEFAULT NULL,
-  `Date_of_ordering` datetime NOT NULL,
-  `Location` varchar(20) DEFAULT NULL,
-  `Account` varchar(20) DEFAULT NULL,
-  `Cus_id` int NOT NULL,
-   CONSTRAINT FK_orderID4online FOREIGN KEY (Order_id) REFERENCES Orders(Order_id),
-   CONSTRAINT FK_cusID FOREIGN KEY (Cus_id) REFERENCES Customer(Cus_id)
-);
-
-
 CREATE TABLE Food
 (
   `Food_Name` longtext DEFAULT NULL,
