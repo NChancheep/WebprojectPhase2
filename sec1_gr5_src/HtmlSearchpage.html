@@ -33,6 +33,7 @@
             document.getElementById("sidenav").style.width = "0";
         }
     </script>
+    <script src="JsSearchpage.js"></script>
 </head>
 <body>
     <main class="container-fluid">
@@ -71,18 +72,29 @@
         
         <section class="section2 container-sm">
             <img src="./images/LOGO_Black.png" class="img-fluid" alt="image1">
-            <img src="./images/decoration_line2.png" class="img-fluid" alt="image2" id="imgline"><br>
-            <form class="d-flex p-2 bd-highlight">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" title="Ex. Pasta">
-                <button type="button" class="btn btn-default" onClick="location.href='HtmlResultpage.html'">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
+            <img src="./images/decoration_line2.png" class="img-fluid" alt="image2" id="imgline">
+            <input type="text" id="search" required placeholder="search food" />
+            <button onclick="search(document.getElementById('search').value)">Submit</button>
+            <div id="result1"></div>
+            <input type="text" id="search1" required placeholder="search drink" />
+            <button onclick="search1(document.getElementById('search1').value)">Submit</button>
+            <div id="result2"></div>
+            <input type="text" id="search2" required placeholder="search dessert" />
+            <button onclick="search2(document.getElementById('search2').value)">Submit</button>
+            <div id="result3"></div>
+            <br><br>
+            <div id="result4"></div>
+
             </form>
         </section>
-        <article class="section3 container-sm">
+
+        <!-- <article class="section3 container-sm">
             <img src="./images/Itshowtime.png" class="img-fluid image3" alt="image3">
             <img src="./images/decoration_people.png" class="img-fluid image4" alt="image4">
-        </article>
+        </article> -->
+        <div id="result"></div>
+
+        
         
     </main>
 
