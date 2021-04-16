@@ -4,29 +4,11 @@
 -- Chancheep Mahacharoensuk 6288092
 -- Kantapong Matangkarat 6288160
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Webprogramming: `greyhound`
---
 DROP DATABASE IF EXISTS `project1_phase2_group5`;
 CREATE DATABASE IF NOT EXISTS `project1_phase2_group5`;
 USE `project1_phase2_group5`;
 
--- ---------------------------------------------------------------------------------------
 
---
--- Table structure for table `Login_Information`
---
 
 CREATE TABLE Login_Information
 (
@@ -44,49 +26,6 @@ CREATE TABLE Login_Information
   `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (login_id)
 );
-
---
--- Alter & drop for table `Login_Information`
---
-
--- ALTER TABLE Login_Information
---  ADD PRIMARY KEY (`login_id`);
-  
-
--- ALTER TABLE Login_Information CHANGE 'login_id' NOT NULL AUTO_INCREMENT, auto_increment=6;
-
-
--- ---------------------------------------------------------------------------------------
-
---
--- Table structure for table `User_Information`
---
-
--- CREATE TABLE User_Information
--- (
---   `user_id` int(5) NOT NULL  AUTO_INCREMENT,
---   `firstname` varchar(20) DEFAULT NULL,
---   `lastname` varchar(20) DEFAULT NULL,
---   `address` varchar(100) DEFAULT NULL,
---   `age` int(2) DEFAULT NULL,
---   `preferences` varchar(50) DEFAULT NULL,
---   `email` varchar(50) DEFAULT NULL,
---   `login_id` int(4) NOT NULL,
---   CONSTRAINT FK_UserLoginID FOREIGN KEY (login_id) REFERENCES Login_Information(login_id)
--- );
-
---
--- Alter & drop for table `User_Information`
---
-
--- ALTER TABLE User_Information
---   ADD PRIMARY KEY (`user_id`);
-  
--- ---------------------------------------------------------------------------------------
-
---
--- Table structure for table `Admin_Information`
---
 
 CREATE TABLE Admin_Information
 (
@@ -275,6 +214,23 @@ CREATE TABLE Onlines
   `Cus_id` int NOT NULL,
    CONSTRAINT FK_orderID4online FOREIGN KEY (Order_id) REFERENCES Orders(Order_id),
    CONSTRAINT FK_cusID FOREIGN KEY (Cus_id) REFERENCES Customer(Cus_id)
+);
+
+
+CREATE TABLE Food
+(
+  `Food_Name` longtext DEFAULT NULL,
+  `Food_Price` int(20) NOT NULL
+);
+CREATE TABLE Dessert
+(
+  `Dessert_Name` longtext DEFAULT NULL,
+  `Dessert_Price` int(20) NOT NULL
+);
+CREATE TABLE Drink
+(
+  `Drink_Name` longtext DEFAULT NULL,
+  `Drink_Price` int(20) NOT NULL
 );
 
 -- ---------------------------------------------------------------------------------------
@@ -699,91 +655,6 @@ INSERT INTO Cash (`Pay_id`, `Cost`, `Final_Cost`, `Changes`, `Currency`) VALUES
 --
 -- Dumping data for table `Onsite`
 --
-
-INSERT INTO Onsite (`Order_id`, `Table_No`, `WhenOrder`, `Statuss`, `No_of_people`, `Booking_Schedule`, `Reserved`) VALUES
-(001, 1, '2020-06-02 17:03:07', 'available', 4, '2020-06-03 12:00:00', 6),
-(002, 2, '2020-11-07 10:30:13', 'unavailable', 2, null, null),
-(003, 3, '2020-10-19 21:14:43', 'available', 3, '2020-10-20 16:00:00', 2),
-(004, 4, '2020-11-24 20:50:36', 'unavailable', 2, null, null),
-(005, 5, '2020-02-07 11:49:15', 'unavailable', 2, null, null),
-(006, 6, '2020-11-22 10:00:33', 'available', 2, '2020-11-22 16:00:00', 4),
-(007, 7, '2020-10-06 14:26:43', 'unavailable', 4, null, null),
-(008, 8, '2020-07-03 12:31:44', 'available', 1, '2020-07-06 20:00:00', 2),
-(009, 9, '2020-06-14 11:26:16', 'available', 2, '2020-06-17 16:00:00', 3),
-(010, 10, '2020-07-13 18:56:33', 'available', 1, '2020-07-13 20:00:00', 2),
-(011, 1, '2020-05-11 15:55:55', 'unavailable', 3, null, null),
-(012, 2, '2020-11-04 19:24:33', 'available', 2, '2020-11-05 16:00:00', 2),
-(013, 3, '2020-01-31 14:48:20', 'unavailable', 2, null, null),
-(014, 4, '2020-02-19 11:31:07', 'unavailable', 2, null, null),
-(015, 5, '2020-07-07 17:07:54', 'unavailable', 3, null, null),
-(016, 6, '2020-03-21 10:32:17', 'unavailable', 2, null, null),
-(017, 7, '2020-04-30 16:20:21', 'unavailable', 2, null, null),
-(018, 8, '2020-10-11 13:14:15', 'available', 1, '2020-10-12 16:00:00', 2),
-(019, 9, '2020-01-02 12:07:37', 'unavailable', 4, null, null),
-(020, 10, '2020-05-09 19:27:18', 'available', 2, '2020-05-10 20:00:00', 2),
-(021, 1, '2020-08-26 15:39:54', 'unavailable', 1, null, null),
-(022, 2, '2020-06-28 21:18:09', 'available', 2, '2020-06-29 12:00:00', 5),
-(023, 3, '2020-09-26 17:51:12', 'unavailable', 2, null, null),
-(024, 4, '2020-02-27 11:19:31', 'available', 2, '2020-02-28 16:00:00', 2),
-(025, 5, '2020-05-31 19:24:39', 'unavailable', 3, null, null),
-(026, 6, '2020-06-19 13:27:10', 'unavailable', 2, null, null),
-(027, 7, '2020-07-05 18:05:19', 'available', 2, '2020-07-05 20:00:00', 2),
-(028, 8, '2020-08-16 20:39:47', 'available', 2, '2020-08-17 16:00:00', 4),
-(029, 9, '2020-09-19 11:37:15', 'unavailable', 1, null, null),
-(030, 10, '2020-10-15 18:20:58', 'available', 2, '2020-10-16 16:00:00', 2);
-
---
--- Dumping data for table `Onlines`
---
-
-INSERT INTO Onlines (`Order_id`, `Tax_invoice`, `Delivery_status`, `Date_of_ordering`, `Location`, `Account`, `Cus_id`) VALUES
-(031, 1140, 'On the route', '2020-02-05 14:21:35', 'Konohagakure', 'Naruto', 4288001),
-(032, 610, 'Ordering', '2020-05-15 13:42:11', 'Konohagakure', 'Sasuke', 4288002),
-(033, 1400, 'Order confirmation', '2020-03-26 18:31:45', 'Konohagakure', 'Sakura', 4288003),
-(034, 750, 'Order confirmation', '2020-08-27 19:30:30', 'Konohagakure', 'Shikamaru', 4288004),
-(035, 680, 'Done', '2020-03-16 10:47:52', 'Konohagakure', 'Choji', 4288005),
-(036, 1090, 'On the route', '2020-04-16 20:48:01', 'Konohagakure', 'Ino', 4288006),
-(037, 535, 'Done', '2020-01-30 21:11:12', 'Konohagakure', 'Kiba', 4288007),
-(038, 720, 'Ordering', '2020-07-04 21:23:46', 'Konohagakure', 'Shino', 4288008),
-(039, 950, 'Order confirmation', '2020-09-02 14:17:26', 'Konohagakure', 'Hinata', 4288009),
-(040, 790, 'On the route', '2020-02-06 18:25:38', 'Konohagakure', 'Neji', 4288010),
-(041, 1900, 'Ordering', '2020-11-02 16:42:59', 'Konohagakure', 'Lee', 4288011),
-(042, 580, 'Done', '2020-03-14 12:42:13', 'Konohagakure', 'Tenten', 4288012),
-(043, 1250, 'On the route', '2020-10-29 11:32:41', 'Sunagakure', 'Gaara', 4288013),
-(044, 760, 'Done', '2020-04-16 17:02:48', 'Sunagakure', 'Kankuro', 4288014),
-(045, 650, 'Done', '2020-11-14 11:21:09', 'Sunagakure', 'Temari', 4288015),
-(046, 640, 'On the route', '2020-03-08 11:08:09', 'Konohagakure', 'Kakashi', 4288016),
-(047, 380, 'Order confirmation', '2020-05-31 19:54:12', 'Konohagakure', 'Asuma', 4288017),
-(048, 1040, 'Order confirmation', '2020-07-21 16:21:47', 'Konohagakure', 'Kurenai', 4288018),
-(049, 1180, 'Ordering', '2020-05-09 12:13:14', 'Konohagakure', 'MightGuy', 4288019),
-(050, 820, 'On the route', '2020-03-29 15:47:56', 'Konohagakure', 'Hashirama', 4288020),
-(051, 540, 'Done', '2020-08-04 20:45:31', 'Konohagakure', 'Tobirama', 4288021),
-(052, 575, 'Ordering', '2020-02-28 17:59:45', 'Konohagakure', 'Hiruzen', 4288022),
-(053, 340, 'Done', '2020-03-02 13:58:16', 'Konohagakure', 'Minato', 4288023),
-(054, 790, 'Order confirmation', '2020-06-08 11:43:52', 'Konohagakure', 'Tsunade', 4288024),
-(055, 875, 'Ordering', '2020-07-19 14:27:51', 'Konohagakure', 'Jiraiya', 4288025),
-(056, 940, 'Order confirmation', '2020-08-16 11:40:42', 'Otogakure', 'Orochimaru', 4288026),
-(057, 645, 'On the route', '2020-03-30 13:17:18', 'Konohagakure', 'Itachi', 4288027),
-(058, 1350, 'On the route', '2020-09-20 18:58:12', 'Konohagakure', 'Obito', 4288028),
-(059, 1020, 'Order confirmation', '2020-10-14 11:14:54', 'Konohagakure', 'Madara', 4288029),
-(060, 550, 'Done', '2020-04-13 16:45:46', 'Konohagakure', 'Shisui', 4288030);
-
-CREATE TABLE Food
-(
-  `Food_Name` longtext DEFAULT NULL,
-  `Food_Price` int(20) NOT NULL
-);
-CREATE TABLE Dessert
-(
-  `Dessert_Name` longtext DEFAULT NULL,
-  `Dessert_Price` int(20) NOT NULL
-);
-CREATE TABLE Drink
-(
-  `Drink_Name` longtext DEFAULT NULL,
-  `Drink_Price` int(20) NOT NULL
-);
-
 
 INSERT INTO Food (`Food_Name`, `Food_Price`) VALUES
 ('Garden Vegetable Soup', 160),

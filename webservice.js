@@ -159,3 +159,77 @@ app.post('/register', function (req, res, next) {
 		}
 	})
 });
+
+router.get('/search&/Food/:name',function(req,res){
+    let Food_Name = req.params.name;
+    if(!Food_Name) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product name.'});
+    }
+
+    dbConn.query('SELECT Food_Name FROM Food WHERE Food_Name=? order by Food_Name', Food_Name,function(error,results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               4
+});
+router.get('/search&/Food',function(req,res){
+    dbConn.query('SELECT Food_Name FROM Food',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Food.'});
+    });                                                                                                                                             4
+});
+
+//`Drink_Name`, `Drink_Price`
+router.get('/search&/Drink/:name',function(req,res){
+    let Drink_Name = req.params.name;
+    if(!Drink_Name) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product name.'});
+    }
+
+    dbConn.query('SELECT Drink_Name FROM Drink WHERE Drink_Name=? order by Drink_Name', Drink_Name,function(error,results)
+    {
+        if(error) throw error;
+        console.log(results);
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               4
+});
+router.get('/search&/Drink',function(req,res){
+    dbConn.query('SELECT Drink_Name FROM Drink',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Drink.'});
+    });                                                                                                                                             4
+});
+
+//`Dessert_Name`, `Dessert_Price`
+router.get('/search&/Dessert/:name',function(req,res){
+    let Dessert_Name = req.params.name;
+    if(!Dessert_Name) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product name.'});
+    }
+
+    dbConn.query('SELECT Dessert_Name FROM Dessert WHERE Dessert_Name=? order by Dessert_Name', Dessert_Name,function(error,results)
+    {
+        if(error) throw error;
+        console.log(results);
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               4
+});
+
+router.get('/search&/Dessert',function(req,res){
+    dbConn.query('SELECT Dessert_Name FROM Dessert',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Dessert.'});
+    });                                                                                                                                             4
+});
+
+//`Branch_id`, `Contact_No`, `Location`, `Name`
+router.get('/search&/Branch',function(req,res){
+    dbConn.query('SELECT Location FROM Branch',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Branch.'});
+    });
+});
