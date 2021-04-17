@@ -2,6 +2,7 @@ function alwayscheck() {
   const login = localStorage.getItem('login');
   if(login)
   {
+    document.getElementById("showSearch").innerHTML = `<a href="HtmlSearchpage.html">SEARCH</a>`;
     document.getElementById("showLogout").innerHTML = `<a href="" onclick="logoutset()">LOGOUT</a>`;
     document.getElementById("memberIn1").innerHTML = `<a href="HtmlAccountpage.html"><i class=""></i><b>MEMBER</b></a>`;
     document.getElementById("memberIn2").innerHTML = `<a href="HtmlAccountpage.html"><i class="glyphicon glyphicon-user"></i></a>`;
