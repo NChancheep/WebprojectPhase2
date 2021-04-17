@@ -47,7 +47,6 @@ app.use(bp.json());
 app.post('/userlogin', function (req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
-	console.log(req.body.info);
 	console.log(username, password);
 	if (!username) {
 		return res.status(400).send({

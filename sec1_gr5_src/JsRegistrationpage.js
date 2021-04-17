@@ -1,5 +1,5 @@
 async function regis(username, password, firstname, lastname, address, age, email) {
-    event.preventDefault();
+    //event.preventDefault();
     let info = {
         username: username, //localhost
         password: password, //1234
