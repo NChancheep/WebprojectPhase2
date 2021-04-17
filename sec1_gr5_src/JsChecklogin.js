@@ -17,6 +17,5 @@ function logoutset()
 {
   localStorage.clear();
   alert("logout successful");
-  location.replace("HtmlLoginpage.html");
 }
 
