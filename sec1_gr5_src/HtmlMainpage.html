@@ -35,6 +35,7 @@
             document.getElementById("sidenavHome").style.width = "0";
         }
     </script>
+    <script src="JsChecklogin.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -78,7 +79,7 @@
     </style>
 </head>
 
-<body>
+<body onload="alwayscheck()">
     <main class="All">
         <div class="topbar">
             <nav class="col text-right">
@@ -105,9 +106,8 @@
                         <a href="HtmlOurstorypage.html">OUR STORY</a>
                         <a href="HtmlAboutuspage.html">ABOUT US</a>
                         <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlSearchpage.html">SEARCH</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                        <div id="showLogin"></div>
+                        <div id="showLogout"></div>
                     </div>
                 </div>
             </header>

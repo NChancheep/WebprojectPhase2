@@ -27,6 +27,7 @@
         Login
     </title>
     <script src="JsLoginpage.js"></script>
+    <script src="JsChecklogin.js"></script>
     <script>
         function openNav() {
             document.getElementById("sidenav").style.width = "200px";
@@ -56,7 +57,7 @@
     </script>
 </head>
 
-<body>
+<body onload="alwayscheck()">
     <main class="container-sd">
         <header class="row">
             <div class="Allnav">
@@ -73,9 +74,8 @@
                         <a href="HtmlOurstorypage.html">OUR STORY</a>
                         <a href="HtmlAboutuspage.html">ABOUT US</a>
                         <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlSearchpage.html">SEARCH</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                        <div id="showLogin"></div>
+                        <div id="showLogout"></div>
                     </div>
                 </div>
                 <nav class="col text-right">
