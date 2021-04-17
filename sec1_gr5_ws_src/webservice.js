@@ -300,3 +300,575 @@ router.get('/search&/Branch',function(req,res){
     });
 });
 
+//INSERT LOGIN USER
+app.post('/admin/insert&/User', function (req, res) {
+	let info = {
+		username: req.body.username,
+		password: req.body.password,
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		address: req.body.address,
+		age: req.body.age,
+		preferences: req.body.preferences,
+		email: req.body.email
+	}
+	console.log(req.body.info);
+	if (!info.username) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide username.'
+		});
+	}
+	if (!info.password) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide password.'
+		});
+	}
+	if (!info.firstname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide firstname.'
+		});
+	}
+	if (!info.lastname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide lastname.'
+		});
+	}
+	if (!info.age) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide age.'
+		});
+	}
+	if (!info.email) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide email address.'
+		});
+	}
+	dbConn.query('INSERT INTO Login_Information SET ?', info, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'New user has been created successfully.'
+		});
+	})
+})
+
+//UPDATE LOGIN USER
+app.put('/admin/update&/User/:id', function (req, res) {
+	let login_id = req.params.id;
+	let username = req.body.username;
+	let password = req.body.password;
+	let firstname = req.body.firstname;
+	let lastname = req.body.lastname;
+	let address = req.body.address;
+	let age = req.body.age;
+	let preferences = req.body.preferences;
+	let email = req.body.email;
+	console.log(username, password, firstname, lastname, address, age, preferences, email);
+	dbConn.query('UPDATE Login_Information SET username = ?, password = ?, firstname = ?, lastname = ?, address = ?, age = ?, preferences = ?, email = ? WHERE login_id = ?', [username, password, firstname, lastname, address, age, preferences, email, login_id], function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'User has been updated successfully.'
+		});
+	})
+})
+
+//DELETE LOGIN USER
+app.delete('/admin/delete&/User/:id', function (req, res) {
+	let login_id = req.params.id;
+	console.log(login_id);
+	if (!login_id) {
+		return res.status(400).send({
+			error: true,
+			message: "Please provide user's login id."
+		});
+	}
+	dbConn.query('DELETE FROM Login_Information WHERE login_id = ?', login_id, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'User has been deleted successfully.'
+		});
+	})
+})
+
+//SELECT BY USER'S LOGIN ID
+app.get('/admin/search&/User/:id', function (req, res) {
+	let login_id = req.params.id;
+	console.log(login_id);
+	if (!login_id) {
+		return res.status(400).send({
+			error: true,
+			message: "Please provide user's login id."
+		});
+	}
+	dbConn.query('SELECT * FROM Login_Information WHERE login_id = ?', login_id, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		if (results.length > 0) {
+			console.log(results);
+			return res.send({
+				error: false,
+				data: results[0],
+				message: 'User retrieved'
+			});
+		} else {
+			console.log(results);
+			return res.send({
+				error: true,
+				data: results[0],
+				message: 'ERROR'
+			});
+		}
+	})
+})
+
+//SELECT ALL LOGIN USER
+app.get('/admin/search&/User', function (req, res) {
+	dbConn.query('SELECT * FROM Login_Information', function(error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'User List'
+		});
+	})
+})
+
+//Food_Name: Pomelo Salad
+//Food_Price: 240
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+//INSERT FOOD
+app.post('/admin/insert&/Food', function (req, res) {
+	let info = {
+		Food_Name: req.body.Food_Name,
+		Food_Price: req.body.Food_Price
+	}
+	console.log(req.body.info);
+	if (!info.Food_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food name.'
+		});
+	}
+	if (!info.Food_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food price.'
+		});
+	}
+	dbConn.query('INSERT INTO Food SET ?', info, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Food has been created successfully.'
+		});
+	})
+})
+
+//UPDATE FOOD
+app.put('/admin/update&/Food/:name', function (req, res) {
+	let Food_Name = req.params.name;
+	let Food_Price = req.body.Food_Price;
+	console.log(Food_Name, Food_Price);
+	if (!Food_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food name.'
+		});
+	}
+	if (!Food_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food price.'
+		});
+	}
+	dbConn.query('UPDATE Food SET Food_Price = ? WHERE Food_Name = ?', [Food_Price , Food_Name], function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Food has been updated successfully.'
+		});
+	})
+})
+
+//DELETE FOOD
+app.delete('/admin/delete&/Food/:name', function (req, res) {
+	let Food_Name = req.params.name;
+	console.log(Food_Name);
+	if (!Food_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food name.'
+		});
+	}
+	dbConn.query('DELETE FROM Food WHERE Food_Name = ?', Food_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Food has been deleted successfully.'
+		});
+	})
+})
+
+//SELECT BY FOOD NAME
+app.get('/admin/search&/Foodname/:name', function (req, res) {
+	let Food_Name = req.params.name;
+    if(!Food_Name) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide food name.'
+		});
+    }
+	var sql = `SELECT * FROM Food WHERE Food_Name LIKE '%${Food_Name}%' order by Food_Name`;
+    dbConn.query(sql,function(error,results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error: false,
+			data: results,
+			message:'Food retrieved'
+		});
+    })
+})
+
+//SELECT BY FOOD PRICE
+app.get('/admin/search&/Foodprice/:price', function (req, res) {
+	let Food_Price = req.params.price;
+    if(!Food_Price) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide food price.'
+		});
+    }
+	dbConn.query('SELECT * FROM Food WHERE Food_Price=? order by Food_Price', Food_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error:false,
+			data:results,
+			message:'Food retrieved'
+		});
+    })
+})
+
+//SELECT ALL FOOD
+app.get('/admin/search&/Food', function (req, res) {
+	dbConn.query('SELECT * FROM Food', (error, results) => {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Food List'
+		});
+	})
+})
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+//Drink_Name: Iced Tea
+//Drink_Price: 100
+
+//INSERT DRINK
+app.post('/admin/insert&/Drink', function (req, res) {
+	let info = {
+		Drink_Name: req.body.Drink_Name,
+		Drink_Price: req.body.Drink_Price
+	}
+	console.log(req.body.info);
+	if (!info.Drink_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink name.'
+		});
+	}
+	if (!info.Drink_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink price.'
+		});
+	}
+	dbConn.query('INSERT INTO Drink SET ?', info, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Drink has been created successfully.'
+		});
+	})
+})
+
+//UPDATE DRINK
+app.put('/admin/update&/Drink/:name', function (req, res) {
+	let Drink_Name = req.params.name;
+	let Drink_Price = req.body.Drink_Price;
+	console.log(Drink_Name, Drink_Price);
+	if (!Drink_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink name.'
+		});
+	}
+	if (!Drink_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink price.'
+		});
+	}
+	dbConn.query('UPDATE Drink SET Drink_Price = ? WHERE Drink_Name = ?', [Drink_Price , Drink_Name], function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Drink has been updated successfully.'
+		});
+	})
+})
+
+//DELETE DRINK
+app.delete('/admin/delete&/Drink/:name', function (req, res) {
+	let Drink_Name = req.params.name;
+	console.log(Drink_Name);
+	if (!Drink_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink name.'
+		});
+	}
+	dbConn.query('DELETE FROM Drink WHERE Drink_Name = ?', Drink_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Drink has been deleted successfully.'
+		});
+	})
+})
+
+//SELECT BY DRINK NAME
+app.get('/admin/search&/Drinkname/:name', function (req, res) {
+	let Drink_Name = req.params.name;
+    if(!Drink_Name) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide drink name.'
+		});
+    }
+	var sql = `SELECT * FROM Drink WHERE Drink_Name LIKE '%${Drink_Name}%' order by Drink_Name`;
+    dbConn.query(sql,function(error,results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error:false,
+			data:results,
+			message:'Drink retrieved'
+		});
+    })
+})
+
+//SELECT BY DRINK PRICE
+app.get('/admin/search&/Drinkprice/:price', function (req, res) {
+	let Drink_Price = req.params.price;
+    if(!Drink_Price) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide drink price.'
+		});
+    }
+	dbConn.query('SELECT * FROM Drink WHERE Drink_Price=? order by Drink_Price', Drink_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error:false,
+			data:results,
+			message:'Drink retrieved'
+		});
+    })
+})
+
+//SELECT ALL DRINK
+app.get('/admin/search&/Drink', function (req, res) {
+	dbConn.query('SELECT * FROM Drink', (error, results) => {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Drink List'
+		});
+	})
+})
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+//Dessert_Name: Happy Toast
+//Dessert_Price: 120
+
+//INSERT DESSERT
+app.post('/admin/insert&/Dessert', function (req, res) {
+	let info = {
+		Dessert_Name: req.body.Dessert_Name,
+		Dessert_Price: req.body.Dessert_Price
+	}
+	console.log(req.body.info);
+	if (!info.Dessert_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert name.'
+		});
+	}
+	if (!info.Dessert_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert price.'
+		});
+	}
+	dbConn.query('INSERT INTO Dessert SET ?', info, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Dessert has been created successfully.'
+		});
+	})
+})
+
+//UPDATE DESSERT
+app.put('/admin/update&/Dessert/:name', function (req, res) {
+	let Dessert_Name = req.params.name;
+	let Dessert_Price = req.body.Dessert_Price;
+	console.log(Dessert_Name, Dessert_Price);
+	if (!Dessert_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert name.'
+		});
+	}
+	if (!Dessert_Price) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert price.'
+		});
+	}
+	dbConn.query('UPDATE Dessert SET Dessert_Price = ? WHERE Dessert_Name = ?', [Dessert_Price , Dessert_Name], function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Dessert has been updated successfully.'
+		});
+	})
+})
+
+//DELETE DESSERT
+app.delete('/admin/delete&/Dessert/:name', function (req, res) {
+	let Dessert_Name = req.params.name;
+	console.log(Dessert_Name);
+	if (!Dessert_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert name.'
+		});
+	}
+	dbConn.query('DELETE FROM Dessert WHERE Dessert_Name = ?', Dessert_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Dessert has been deleted successfully.'
+		});
+	})
+})
+
+//SELECT BY DESSERT NAME
+app.get('/admin/search&/Dessertname/:name', function (req, res) {
+	let Dessert_Name = req.params.name;
+    if(!Dessert_Name) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide dessert name.'
+		});
+    }
+	var sql = `SELECT * FROM Dessert WHERE Dessert_Name LIKE '%${Dessert_Name}%' order by Dessert_Name`;
+    dbConn.query(sql,function(error,results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error:false,
+			data:results,
+			message:'Dessert retrieved'
+		});
+    })
+})
+
+//SELECT BY DESSERT PRICE
+app.get('/admin/search&/Dessertprice/:price', function (req, res) {
+	let Dessert_Price = req.params.price;
+    if(!Dessert_Price) 
+    {
+        return res.status(400).send({
+			error: true, 
+			message:'Please provide dessert price.'
+		});
+    }
+	dbConn.query('SELECT * FROM Dessert WHERE Dessert_Price=? order by Dessert_Price', Dessert_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({
+			error:false,
+			data:results,
+			message:'Dessert retrieved'
+		});
+    })
+})
+
+//SELECT ALL DESSERT
+app.get('/admin/search&/Dessert', function (req, res) {
+	dbConn.query('SELECT * FROM Dessert', (error, results) => {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results,
+			message: 'Dessert List'
+		});
+	})
+})
