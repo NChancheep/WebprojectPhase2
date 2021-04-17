@@ -166,8 +166,8 @@ router.get('/search&/Food/:name',function(req,res){
     {
         return res.status(400).send({error: true, message:'Please provide product name.'});
     }
-
-    dbConn.query('SELECT Food_Name FROM Food WHERE Food_Name=? order by Food_Name', Food_Name,function(error,results)
+	var sql = `SELECT Food_Name FROM Food WHERE Food_Name LIKE '%${Food_Name}%' order by Food_Name`;
+    dbConn.query(sql,function(error,results)
     {
         console.log(results);
         if(error) throw error;
@@ -188,8 +188,8 @@ router.get('/search&/Drink/:name',function(req,res){
     {
         return res.status(400).send({error: true, message:'Please provide product name.'});
     }
-
-    dbConn.query('SELECT Drink_Name FROM Drink WHERE Drink_Name=? order by Drink_Name', Drink_Name,function(error,results)
+	var sql = `SELECT Drink_Name FROM Drink WHERE Drink_Name LIKE '%${Drink_Name}%' order by Drink_Name`;
+    dbConn.query(sql,function(error,results)
     {
         if(error) throw error;
         console.log(results);
@@ -211,7 +211,8 @@ router.get('/search&/Dessert/:name',function(req,res){
         return res.status(400).send({error: true, message:'Please provide product name.'});
     }
 
-    dbConn.query('SELECT Dessert_Name FROM Dessert WHERE Dessert_Name=? order by Dessert_Name', Dessert_Name,function(error,results)
+	var sql = `SELECT Dessert_Name FROM Dessert WHERE Dessert_Name LIKE '%${Dessert_Name}%' order by Dessert_Name`;
+    dbConn.query(sql,function(error,results)
     {
         if(error) throw error;
         console.log(results);

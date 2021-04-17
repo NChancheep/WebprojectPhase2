@@ -20,7 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <title>
         Search
     </title>
@@ -35,9 +37,10 @@
     </script>
     <script src="JsSearchpage.js"></script>
 </head>
+
 <body>
     <main class="container-fluid">
-        <header class="row">            
+        <header class="row">
             <div class="col">
                 <span style="font-size:20px;cursor:pointer" onclick="openNav()">
                     <label class="hamburger">
@@ -48,15 +51,15 @@
                 </span>
                 <div id="sidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="HtmlOurstorypage.html">OUR STORY</a>
-                        <a href="HtmlAboutuspage.html">ABOUT US</a>
-                        <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlSearchpage.html">SEARCH</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                    <a href="HtmlOurstorypage.html">OUR STORY</a>
+                    <a href="HtmlAboutuspage.html">ABOUT US</a>
+                    <a href="HtmlCategoriespage.html">CATAGORIES</a>
+                    <a href="HtmlSearchpage.html">SEARCH</a>
+                    <a href="HtmlLoginpage.html">LOGIN</a>
+                    <a href="HtmlMainpage.html">LOG OUT</a>
                 </div>
-              </div>
-              <nav class="col text-right">
+            </div>
+            <nav class="col text-right">
                 <div class="rightnav1">
                     <a href="HtmlMainpage.html" class="home1"><b>HOME</b></a>
                     <a href="HtmlLoginpage.html" class="mem1"><b>MEMBER</b></a>
@@ -66,36 +69,45 @@
                     <a href="HtmlLoginpage.html" class="mem2"><i class="glyphicon glyphicon-user"></i></a>
                 </div>
             </nav>
-            
+
             <hr>
         </header>
-        
-        <section class="section2 container-sm">
-            <img src="./images/LOGO_Black.png" class="img-fluid" alt="image1">
-            <img src="./images/decoration_line2.png" class="img-fluid" alt="image2" id="imgline">
-            <input type="text" id="search" required placeholder="search food" />
-            <button onclick="search(document.getElementById('search').value)">Submit</button>
-            <div id="result1"></div>
-            <input type="text" id="search1" required placeholder="search drink" />
-            <button onclick="search1(document.getElementById('search1').value)">Submit</button>
-            <div id="result2"></div>
-            <input type="text" id="search2" required placeholder="search dessert" />
-            <button onclick="search2(document.getElementById('search2').value)">Submit</button>
-            <div id="result3"></div>
-            <br><br>
-            <div id="result4"></div>
 
-            </form>
+        <img src="./images/LOGO_Black.png" class="img-fluid" alt="image1">
+        <img src="./images/decoration_line2.png" class="img-fluid" alt="image2" id="imgline">
+
+        <section class="section2 container-sm" style="padding: auto;">
+            <div class="container-fluid">
+                <div class="row" style="display:flex">
+                    <div class="col-sm">
+                        <input type="text" id="search" required placeholder="search food" />
+                        <button  class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%; " onclick="search(document.getElementById('search').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="result1"></div>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" id="search1" required placeholder="search drink" />
+                        <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="search1(document.getElementById('search1').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="result2"></div>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" id="search2" required placeholder="search dessert" />
+                        <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="search2(document.getElementById('search2').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="result3"></div>
+                    </div>
+                    <div class="col-sm" >
+                        <button id="search3" class="w3-button w3-black w3-round-large"  style="margin-top: 5%; margin-bottom: 5%;" onclick="locationAll(document.getElementById('search3').value)">Click to see all branch</button>
+                        <div style="margin-bottom: 20%;" id="result4"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container">
+
+            </div>
         </section>
 
-        <!-- <article class="section3 container-sm">
-            <img src="./images/Itshowtime.png" class="img-fluid image3" alt="image3">
-            <img src="./images/decoration_people.png" class="img-fluid image4" alt="image4">
-        </article> -->
-        <div id="result"></div>
 
-        
-        
+
     </main>
 
     <footer>
@@ -104,4 +116,5 @@
         </p>
     </footer>
 </body>
+
 </html>

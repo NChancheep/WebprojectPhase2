@@ -73,67 +73,75 @@ nav a {
     font-size: 50px;
     margin-left: 50px;
 }
-.home1{
+
+.home1 {
     padding-right: 35px;
 }
-.mem1{
+
+.mem1 {
     padding-right: 0px;
 }
-.home2{
+
+.home2 {
     padding-right: 35px;
 }
-.mem2{
+
+.mem2 {
     padding-right: 0px;
 }
+
 .img-fluid {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
-  }
-.image3{
+
+}
+
+.image3 {
     padding-top: 50px;
 }
-#imgline{
+
+#imgline {
     width: 50%;
-    
+
 }
 
-.form-control{
+.form-control {
     margin-left: 10%;
-    
+
 }
 
-.buttonsearch{
+.buttonsearch {
     margin-right: 10%;
 }
 
 footer {
-    position: fixed;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    width: 100%;
-    /* Height of the footer*/
-    height: 40px;
-    background: rgba(196, 196, 196, 0.596);
+    background-color: #000;
+    color: #FFFFFF;
+    font-size:.8em;
+    margin-top:25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
 }
 
 @media screen and (max-width: 1024px) {
-  
-    .rightnav1{
+
+    .rightnav1 {
         display: none;
     }
-    body { 
-        font-size: 2em; 
-     }
+
+    body {
+        font-size: 2em;
+    }
 }
 
 @media screen and (min-width: 1025px) {
-    
-    .rightnav2{
+
+    .rightnav2 {
         display: none;
     }
 }
-
-
-  
