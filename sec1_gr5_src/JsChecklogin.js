@@ -15,3 +15,4 @@ function logoutset()
   alert("logout successful");
   location.replace("HtmlLoginpage.html");
 }
+
