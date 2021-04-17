@@ -82,21 +82,40 @@
         <section class="section2 container-sm" style="padding: auto;">
             <div class="container-fluid">
                 <div class="row" style="display:flex">
+                    <!-- food -->
                     <div class="col-sm">
                         <input type="text" id="search" required placeholder="search food" />
                         <button  class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%; " onclick="search(document.getElementById('search').value)">Submit</button>
                         <div style="margin-bottom: 20%;" id="result1"></div>
                     </div>
                     <div class="col-sm">
+                        <input type="text" id="FoodPriceAll" required placeholder="search price food" />
+                        <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="FoodPriceAll(document.getElementById('FoodPriceAll').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="getfoodprice"></div>
+                    </div>
+                    <!-- drink -->
+                    <div class="col-sm">
                         <input type="text" id="search1" required placeholder="search drink" />
                         <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="search1(document.getElementById('search1').value)">Submit</button>
                         <div style="margin-bottom: 20%;" id="result2"></div>
                     </div>
                     <div class="col-sm">
+                        <input type="text" id="DrinkPriceAll" required placeholder="search price Drink" />
+                        <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="DrinkPriceAll(document.getElementById('DrinkPriceAll').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="getdrinkprice"></div>
+                    </div>
+                    <!-- dessert -->
+                    <div class="col-sm">
                         <input type="text" id="search2" required placeholder="search dessert" />
                         <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="search2(document.getElementById('search2').value)">Submit</button>
                         <div style="margin-bottom: 20%;" id="result3"></div>
                     </div>
+                    <div class="col-sm">
+                        <input type="text" id="DessertPriceAll" required placeholder="search price dessert" />
+                        <button class="w3-button w3-black w3-round-large" style="margin-top: 5%; margin-bottom: 5%;" onclick="DessertPriceAll(document.getElementById('DessertPriceAll').value)">Submit</button>
+                        <div style="margin-bottom: 20%;" id="getdessertprice"></div>
+                    </div>
+                    <!-- location -->
                     <div class="col-sm" >
                         <button id="search3" class="w3-button w3-black w3-round-large"  style="margin-top: 5%; margin-bottom: 5%;" onclick="locationAll(document.getElementById('search3').value)">Click to see all branch</button>
                         <div style="margin-bottom: 20%;" id="result4"></div>

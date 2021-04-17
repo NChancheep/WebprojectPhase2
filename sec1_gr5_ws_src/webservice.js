@@ -171,16 +171,39 @@ router.get('/search&/Food/:name',function(req,res){
         console.log(results);
         if(error) throw error;
         return res.send({error:false,data:results,message:'Product retrssieved'});
-    });                                                                                                                                               4
+    });                                                                                                                                               
 });
+///select foodprice
+router.get('/search&/Food_Price/:price',function(req,res){
+    let Food_Price = req.params.price;
+    if(!Food_Price) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product price.'});
+    }
+	dbConn.query('SELECT * FROM Food WHERE Food_Price=? order by Food_Price', Food_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               
+});
+
+///select all foodname
 router.get('/search&/Food',function(req,res){
     dbConn.query('SELECT Food_Name FROM Food',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Food.'});
-    });                                                                                                                                             4
+    });                                                                                                                                             
+});
+///select all foodPrice
+router.get('/search&/Food_Price',function(req,res){
+    dbConn.query('SELECT Food_Price,Food_Name FROM Food',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Food.'});
+    });                                                                                                                                             
 });
 
-//`Drink_Name`, `Drink_Price`
+///select drinkname
 router.get('/search&/Drink/:name',function(req,res){
     let Drink_Name = req.params.name;
     if(!Drink_Name) 
@@ -193,16 +216,38 @@ router.get('/search&/Drink/:name',function(req,res){
         if(error) throw error;
         console.log(results);
         return res.send({error:false,data:results,message:'Product retrssieved'});
-    });                                                                                                                                               4
+    });                                                                                                                                               
 });
+///select drinkprice
+router.get('/search&/Drink_Price/:price',function(req,res){
+    let Drink_Price = req.params.price;
+    if(!Drink_Price) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product price.'});
+    }
+	dbConn.query('SELECT * FROM Drink WHERE Drink_Price=? order by Drink_Price', Drink_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               
+});
+///select all drinkname
 router.get('/search&/Drink',function(req,res){
     dbConn.query('SELECT Drink_Name FROM Drink',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Drink.'});
-    });                                                                                                                                             4
+    });                                                                                                                                             
+});
+///select all drinkPrice
+router.get('/search&/Drink_Price',function(req,res){
+    dbConn.query('SELECT Drink_Price,Drink_Name FROM Drink',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Drink.'});
+    });                                                                                                                                             
 });
 
-//`Dessert_Name`, `Dessert_Price`
+///select dessertname
 router.get('/search&/Dessert/:name',function(req,res){
     let Dessert_Name = req.params.name;
     if(!Dessert_Name) 
@@ -216,14 +261,35 @@ router.get('/search&/Dessert/:name',function(req,res){
         if(error) throw error;
         console.log(results);
         return res.send({error:false,data:results,message:'Product retrssieved'});
-    });                                                                                                                                               4
+    });                                                                                                                                               
 });
-
+///select dessertprice
+router.get('/search&/Dessert_Price/:price',function(req,res){
+    let Dessert_Price = req.params.price;
+    if(!Dessert_Price) 
+    {
+        return res.status(400).send({error: true, message:'Please provide product price.'});
+    }
+	dbConn.query('SELECT * FROM Dessert WHERE Dessert_Price=? order by Dessert_Price', Dessert_Price, function (error, results)
+    {
+        console.log(results);
+        if(error) throw error;
+        return res.send({error:false,data:results,message:'Product retrssieved'});
+    });                                                                                                                                               
+});
+///select all dessertname
 router.get('/search&/Dessert',function(req,res){
     dbConn.query('SELECT Dessert_Name FROM Dessert',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Dessert.'});
-    });                                                                                                                                             4
+    });                                                                                                                                             
+});
+///select all dessertPrice
+router.get('/search&/Dessert_Price',function(req,res){
+    dbConn.query('SELECT Dessert_Price,Dessert_Name FROM Dessert',function(error,results){
+        if (error) throw error;
+        return res.send({error: false, data:results,message:'list Dessert.'});
+    });                                                                                                                                             
 });
 
 //`Branch_id`, `Contact_No`, `Location`, `Name`
@@ -233,3 +299,4 @@ router.get('/search&/Branch',function(req,res){
         return res.send({error: false, data:results,message:'list Branch.'});
     });
 });
+
