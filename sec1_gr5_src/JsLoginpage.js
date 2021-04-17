@@ -51,5 +51,3 @@ async function adminLogin(username, password) {
         location.replace("HtmlAdminpage.html");
     }
 }
-
-
