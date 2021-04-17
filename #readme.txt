@@ -22,3 +22,7 @@ How to run this project
 //////////////////////////////////////////////////////////////////////////////////////////
 Ps: If you find any trouble in our file that submit on 'Mycourse' this is our link in github
     https://github.com/NChancheep/WebprojectPhase2
+    
+    or this link
+    
+    https://github.com/NChancheep/WebprojectPhase2.git
