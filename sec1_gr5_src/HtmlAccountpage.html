@@ -36,9 +36,10 @@
         }
     </script>
     <script src="JsAccountpage.js"></script>
+    <script src="JsChecklogin.js"></script>
 </head>
 
-<body onload="myFunction()">
+<body onload="myFunction() , alwayscheck()">
     <main class="container-sd">
         <header class="row">
             <div class="Allnav">
@@ -55,8 +56,9 @@
                         <a href="HtmlOurstorypage.html">OUR STORY</a>
                         <a href="HtmlAboutuspage.html">ABOUT US</a>
                         <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                        <a href="HtmlSearchpage.html">SEARCH</a>
+                        <div id="showLogin"></div>
+                        <div id="showLogout"></div>
                     </div>
                 </div>
                 <nav class="col text-right">
@@ -86,9 +88,9 @@
                                         <h6>USER</h6>
                                         <div style="margin-top:10%">
                                             <input type="button" class="button" style="margin-right:10%"
-                                                onClick="location.href='HtmlReservepage.html'" value='Reserve'>
+                                                onClick="location.href='HtmlReservepage.html'" value='Reserve' />
                                             <input type="button" class="button"
-                                                onClick="location.href='HtmlSearchpage.html'" value='SEARCH'>
+                                                onClick="location.href='HtmlSearchpage.html'" value='SEARCH' />
                                         </div>
                                     </div>
                                 </div>

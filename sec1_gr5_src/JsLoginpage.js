@@ -22,6 +22,7 @@ async function userLogin(username, password) {
         alert("Username or password Incorrect");
     }
     else{
+        localStorage.setItem("login", true);
         alert("Welcome back "+res.data.firstname+" "+res.data.lastname);
         location.replace("HtmlAccountpage.html");
     }

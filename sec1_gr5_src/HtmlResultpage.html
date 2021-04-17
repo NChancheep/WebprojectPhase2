@@ -33,11 +33,12 @@
             document.getElementById("sidenav").style.width = "0";
         }
     </script>
+    <script src="JsChecklogin.js"></script>
     <title>
         Greyhound
     </title>
 </head>
-<body>
+<body onload="alwayscheck()">
     <main class="container-fluid">
         <header class="row">            
             <div class="col">
@@ -53,9 +54,8 @@
                         <a href="HtmlOurstorypage.html">OUR STORY</a>
                         <a href="HtmlAboutuspage.html">ABOUT US</a>
                         <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlSearchpage.html">SEARCH</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                        <div id="showLogin"></div>
+                        <div id="showLogout"></div>
                 </div>
               </div>
               <nav class="col text-right">

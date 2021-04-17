@@ -104,3 +104,11 @@ async function locationAll() {
     lists += `</ul>`;
     document.getElementById("result4").innerHTML = lists;
 }
+function myFunction() {
+    const login = localStorage.getItem('login');
+    if(!login)
+    {
+        alert("login first");
+        location.replace("HtmlLoginpage.html");
+    }
+    }
