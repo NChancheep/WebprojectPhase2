@@ -17,12 +17,14 @@ How to run this project
 5.Our test case is available in source code feel free to used it.
 6.If you want to use some function that must login before use you can look in js login file
   or check it via mysql file to find the username and password for login.
-7.Enjoy our work!!!!!
+7.1.Our search function can be pressed even though there is value in input because it is "select all" function.
+7.2.You can search everything but must be in a specific categories.
+8.In admin page you can use every function like "SELECT, INSERT, UPDATE, DELETE"
+9.Enjoy our work!!!!!
 
 //////////////////////////////////////////////////////////////////////////////////////////
-Ps: If you find any trouble in our file that submit on 'Mycourse' this is our link in github
+Ps: If you find any trouble in our file that submit on 'Mycourse' this is our link in github (download from 'main')
+
     https://github.com/NChancheep/WebprojectPhase2
-    
-    or this link
-    
+                   or use git
     https://github.com/NChancheep/WebprojectPhase2.git
