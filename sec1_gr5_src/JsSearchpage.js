@@ -146,3 +146,12 @@ function myFunction() {
         location.replace("HtmlLoginpage.html");
     }
 }
+
+function hideFunction() {
+    var x = document.getElementById("result4");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
