@@ -43,10 +43,17 @@ async function adminLogin(username, password) {
         body: JSON.stringify(info)
     })).json();
     console.log(res);
+    localStorage.setItem("firstname", res.data.firstname);
+    localStorage.setItem("lastname", res.data.lastname);
+    localStorage.setItem("age", res.data.age);
+    localStorage.setItem("email", res.data.email);
+    localStorage.setItem("address", res.data.address);
+    localStorage.setItem("age", res.data.age);
     if (res.error) {
         alert("Username or password Incorrect");
     }
     else{
+        localStorage.setItem("login", true);
         alert("Welcome back "+res.data.firstname+" "+res.data.lastname);
         location.replace("HtmlAdminpage.html");
     }

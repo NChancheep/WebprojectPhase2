@@ -225,7 +225,7 @@ INSERT INTO Login_Information ( `username`, `password`, `firstname`, `lastname`,
 INSERT INTO Admin_Information (`admin_id`, `username`, `password`, `role`, `log`, `firstname`, `lastname`, `address`, `age`, `preferences`, `email`) VALUES
 (0001, "maxnacata", "6288073", "admin", "Access-granted", "Kittitad", "Jiraprasitchai", "MUICT", 20, "Beef Pepperoni Pizza", "kittitad.jir@student.mahidol.ac.th"),
 (0002, "IMVISCaRaMel", "6288090", "admin", "Access-granted", "Arnon", "Noonkhan", "MUICT", 20, "Grilled Pork", "arnon.noo@student.mahidol.ac.th"),
-(0003, "SxYuki", "6288092", "admin", "Access-granted", "Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheeo.mah@student.mahidol.ac.th"),
+(0003, "SxYuki", "6288092", "admin", "Access-granted", "Chancheep", "Mahacharoensuk", "MUICT", 20, "T bone Steak", "chancheep.mah@student.mahidol.ac.th"),
 (0004, "JumpKM", "6288160", "admin", "Access-granted", "Kantapong", "Matangkarat", "MUICT", 20, "Lemon Soda", "kantapong.mat@student.mahidol.ac.th"),
 (0005, "LeviAKM", "2512820", "admin", "Access-granted", "Levi", "Ackerman", "Paradise Island", 34, "Lemon and Vanilla Ice Cream", "levi.ack@survey.com");
 
