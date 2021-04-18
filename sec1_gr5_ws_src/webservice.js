@@ -301,6 +301,43 @@ router.get('/search&/Branch',function(req,res){
 });
 
 //INSERT LOGIN USER
+
+/*
+    TEST CASE#1
+    Testing Insert a User
+    method: POST
+    URL: http://localhost:3030/admin/insert&/User
+    body: raw JSON
+    {
+		"username": "arnon555",
+		"password": "Arnon_555",
+		"firstname": "Arnon",
+		"lastname": "Noonkhan",
+		"address": "MUICT",
+		"age": 20,
+		"preferences": "Halal Food",
+		"email": "arnon555@student.mahidol.ac.th"
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Insert a User
+    method: POST
+    URL: http://localhost:3030/admin/insert&/User
+    body: raw JSON
+    {
+		"username": "jump555",
+		"password": "Jump_555",
+		"firstname": "Kantapong",
+		"lastname": "Matangkarat",
+		"address": "MUICT",
+		"age": 20,
+		"preferences": "Orange Soda",
+		"email": "jump555@student.mahidol.ac.th"
+    }
+*/
+
 app.post('/admin/insert&/User', function (req, res) {
 	let info = {
 		username: req.body.username,
@@ -361,6 +398,43 @@ app.post('/admin/insert&/User', function (req, res) {
 })
 
 //UPDATE LOGIN USER
+
+/*
+    TEST CASE#1
+    Testing Update a User by User's ID
+    method: PUT
+    URL: http://localhost:3030/admin/update&/User/6
+    body: raw JSON
+    {
+		"username": "arnon555",
+		"password": "555_Arnon_N",
+		"firstname": "Arnon",
+		"lastname": "Noonkhan",
+		"address": "Nakhon Pathom",
+		"age": 20,
+		"preferences": "Halal Food",
+		"email": "arnon555@student.mahidol.ac.th"
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Update a User by User's ID
+    method: PUT
+    URL: http://localhost:3030/admin/update&/User/7
+    body: raw JSON
+    {
+		"username": "jump555",
+		"password": "Jump_555",
+		"firstname": "Kantapong",
+		"lastname": "Matangkarat",
+		"address": "Mahidol University",
+		"age": 22,
+		"preferences": "Lemon Soda",
+		"email": "jump555@student.mahidol.ac.th"
+    }
+*/
+
 app.put('/admin/update&/User/:id', function (req, res) {
 	let login_id = req.params.id;
 	let username = req.body.username;
@@ -372,6 +446,60 @@ app.put('/admin/update&/User/:id', function (req, res) {
 	let preferences = req.body.preferences;
 	let email = req.body.email;
 	console.log(username, password, firstname, lastname, address, age, preferences, email);
+	if (!login_id) {
+		return res.status(400).send({
+			error: true,
+			message: "Please provide user's id"
+		})
+	}
+	if (!username) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide username.'
+		});
+	}
+	if (!password) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide password.'
+		});
+	}
+	if (!firstname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide firstname.'
+		});
+	}
+	if (!lastname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide lastname.'
+		});
+	}
+	if (!address) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide address.'
+		});
+	}
+	if (!age) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide age.'
+		});
+	}
+	if (!preferences) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide preferences.'
+		});
+	}
+	if (!email) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide email address.'
+		});
+	}
 	dbConn.query('UPDATE Login_Information SET username = ?, password = ?, firstname = ?, lastname = ?, address = ?, age = ?, preferences = ?, email = ? WHERE login_id = ?', [username, password, firstname, lastname, address, age, preferences, email, login_id], function (error, results) {
 		if (error) throw error;
 		console.log(results);
@@ -383,28 +511,28 @@ app.put('/admin/update&/User/:id', function (req, res) {
 	})
 })
 
-//DELETE LOGIN USER
-app.delete('/admin/delete&/User/:id', function (req, res) {
-	let login_id = req.params.id;
-	console.log(login_id);
-	if (!login_id) {
-		return res.status(400).send({
-			error: true,
-			message: "Please provide user's login id."
-		});
-	}
-	dbConn.query('DELETE FROM Login_Information WHERE login_id = ?', login_id, function (error, results) {
-		if (error) throw error;
-		console.log(results);
-		return res.send({
-			error: false,
-			data: results[0],
-			message: 'User has been deleted successfully.'
-		});
-	})
-})
-
 //SELECT BY USER'S LOGIN ID
+
+/*
+    TEST CASE#1
+    Testing Search a User by User's ID
+    method: GET
+    URL: http://localhost:3030/admin/search&/User/6
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a User by User's ID
+    method: GET
+    URL: http://localhost:3030/admin/search&/User/7
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/User/:id', function (req, res) {
 	let login_id = req.params.id;
 	console.log(login_id);
@@ -435,7 +563,60 @@ app.get('/admin/search&/User/:id', function (req, res) {
 	})
 })
 
+//DELETE LOGIN USER
+
+/*
+    TEST CASE#1
+    Testing Delete a User by User's ID
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/User/6
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Delete a User by User's ID
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/User/7
+    body: raw JSON
+    {
+    }
+*/
+
+app.delete('/admin/delete&/User/:id', function (req, res) {
+	let login_id = req.params.id;
+	console.log(login_id);
+	if (!login_id) {
+		return res.status(400).send({
+			error: true,
+			message: "Please provide user's id."
+		});
+	}
+	dbConn.query('DELETE FROM Login_Information WHERE login_id = ?', login_id, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'User has been deleted successfully.'
+		});
+	})
+})
+
 //SELECT ALL LOGIN USER
+
+/*
+    TEST CASE#1
+    Testing Search All Users
+    method: GET
+    URL: http://localhost:3030/admin/search&/User
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/User', function (req, res) {
 	dbConn.query('SELECT * FROM Login_Information', function(error, results) {
 		if (error) throw error;
@@ -448,11 +629,34 @@ app.get('/admin/search&/User', function (req, res) {
 	})
 })
 
-//Food_Name: Pomelo Salad
-//Food_Price: 240
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 //INSERT FOOD
+
+/*
+    TEST CASE#1
+    Testing Insert a Food
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Food
+    body: raw JSON
+    {
+		"Food_Name": "Chancheep Hamburger",
+    	"Food_Price": 250
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Insert a Food
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Food
+    body: raw JSON
+    {
+		"Food_Name": "Kittitad Max Seafood",
+    	"Food_Price": 500
+    }
+*/
+
 app.post('/admin/insert&/Food', function (req, res) {
 	let info = {
 		Food_Name: req.body.Food_Name,
@@ -483,6 +687,31 @@ app.post('/admin/insert&/Food', function (req, res) {
 })
 
 //UPDATE FOOD
+
+/*
+    TEST CASE#1
+    Testing Update a Food
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Food/Chancheep Hamburger
+    body: raw JSON
+    {
+		"Food_Name": "Chancheep Hamburger",
+    	"Food_Price": 300
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Update a Food
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Food/Kittitad Max Seafood
+    body: raw JSON
+    {
+		"Food_Name": "Kittitad Max Seafood",
+    	"Food_Price": 650
+    }
+*/
+
 app.put('/admin/update&/Food/:name', function (req, res) {
 	let Food_Name = req.params.name;
 	let Food_Price = req.body.Food_Price;
@@ -510,28 +739,28 @@ app.put('/admin/update&/Food/:name', function (req, res) {
 	})
 })
 
-//DELETE FOOD
-app.delete('/admin/delete&/Food/:name', function (req, res) {
-	let Food_Name = req.params.name;
-	console.log(Food_Name);
-	if (!Food_Name) {
-		return res.status(400).send({
-			error: true,
-			message: 'Please provide food name.'
-		});
-	}
-	dbConn.query('DELETE FROM Food WHERE Food_Name = ?', Food_Name, function (error, results) {
-		if (error) throw error;
-		console.log(results);
-		return res.send({
-			error: false,
-			data: results[0],
-			message: 'Food has been deleted successfully.'
-		});
-	})
-})
-
 //SELECT BY FOOD NAME
+
+/*
+    TEST CASE#1
+    Testing Search a Food by Food's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Foodname/Chancheep Hamburger
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Food by Food's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Foodname/Kittitad
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Foodname/:name', function (req, res) {
 	let Food_Name = req.params.name;
     if(!Food_Name) 
@@ -555,6 +784,27 @@ app.get('/admin/search&/Foodname/:name', function (req, res) {
 })
 
 //SELECT BY FOOD PRICE
+
+/*
+    TEST CASE#1
+    Testing Search a Food by Food's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Foodprice/300
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Food by Food's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Foodprice/650
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Foodprice/:price', function (req, res) {
 	let Food_Price = req.params.price;
     if(!Food_Price) 
@@ -576,7 +826,60 @@ app.get('/admin/search&/Foodprice/:price', function (req, res) {
     })
 })
 
+//DELETE FOOD
+
+/*
+    TEST CASE#1
+    Testing Delete a Food
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Food/Chancheep Hamburger
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Delete a Food
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Food/Kittitad Max Seafood
+    body: raw JSON
+    {
+    }
+*/
+
+app.delete('/admin/delete&/Food/:name', function (req, res) {
+	let Food_Name = req.params.name;
+	console.log(Food_Name);
+	if (!Food_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide food name.'
+		});
+	}
+	dbConn.query('DELETE FROM Food WHERE Food_Name = ?', Food_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Food has been deleted successfully.'
+		});
+	})
+})
+
 //SELECT ALL FOOD
+
+/*
+    TEST CASE#1
+    Testing Search All Foods
+    method: GET
+    URL: http://localhost:3030/admin/search&/Food
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Food', function (req, res) {
 	dbConn.query('SELECT * FROM Food', (error, results) => {
 		if (error) throw error;
@@ -591,10 +894,32 @@ app.get('/admin/search&/Food', function (req, res) {
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
-//Drink_Name: Iced Tea
-//Drink_Price: 100
-
 //INSERT DRINK
+
+/*
+    TEST CASE#1
+    Testing Insert a Drink
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Drink
+    body: raw JSON
+    {
+		"Drink_Name": "Iced Marufkhan",
+    	"Drink_Price": 150
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Insert a Drink
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Drink
+    body: raw JSON
+    {
+		"Drink_Name": "Hot Kantapong",
+    	"Drink_Price": 150
+    }
+*/
+
 app.post('/admin/insert&/Drink', function (req, res) {
 	let info = {
 		Drink_Name: req.body.Drink_Name,
@@ -625,6 +950,31 @@ app.post('/admin/insert&/Drink', function (req, res) {
 })
 
 //UPDATE DRINK
+
+/*
+    TEST CASE#1
+    Testing Update a Drink
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Drink/Iced Marufkhan
+    body: raw JSON
+    {
+		"Drink_Name": "Iced Marufkhan",
+    	"Drink_Price": 555
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Update a Drink
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Drink/Hot Kantapong
+    body: raw JSON
+    {
+		"Drink_Name": "Hot Kantapong",
+    	"Drink_Price": 555
+    }
+*/
+
 app.put('/admin/update&/Drink/:name', function (req, res) {
 	let Drink_Name = req.params.name;
 	let Drink_Price = req.body.Drink_Price;
@@ -652,28 +1002,28 @@ app.put('/admin/update&/Drink/:name', function (req, res) {
 	})
 })
 
-//DELETE DRINK
-app.delete('/admin/delete&/Drink/:name', function (req, res) {
-	let Drink_Name = req.params.name;
-	console.log(Drink_Name);
-	if (!Drink_Name) {
-		return res.status(400).send({
-			error: true,
-			message: 'Please provide drink name.'
-		});
-	}
-	dbConn.query('DELETE FROM Drink WHERE Drink_Name = ?', Drink_Name, function (error, results) {
-		if (error) throw error;
-		console.log(results);
-		return res.send({
-			error: false,
-			data: results[0],
-			message: 'Drink has been deleted successfully.'
-		});
-	})
-})
-
 //SELECT BY DRINK NAME
+
+/*
+    TEST CASE#1
+    Testing Search a Drink by Drink's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Drinkname/Iced Marufkhan
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Drink by Drink's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Drinkname/Hot Kantapong
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Drinkname/:name', function (req, res) {
 	let Drink_Name = req.params.name;
     if(!Drink_Name) 
@@ -697,6 +1047,27 @@ app.get('/admin/search&/Drinkname/:name', function (req, res) {
 })
 
 //SELECT BY DRINK PRICE
+
+/*
+    TEST CASE#1
+    Testing Search a Drink by Drink's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Drinkprice/555
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Drink by Drink's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Drinkprice/95
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Drinkprice/:price', function (req, res) {
 	let Drink_Price = req.params.price;
     if(!Drink_Price) 
@@ -718,7 +1089,60 @@ app.get('/admin/search&/Drinkprice/:price', function (req, res) {
     })
 })
 
+//DELETE DRINK
+
+/*
+    TEST CASE#1
+    Testing Delete a Drink
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Drink/Iced Marufkhan
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Delete a Drink
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Drink/Hot Kantapong
+    body: raw JSON
+    {
+    }
+*/
+
+app.delete('/admin/delete&/Drink/:name', function (req, res) {
+	let Drink_Name = req.params.name;
+	console.log(Drink_Name);
+	if (!Drink_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide drink name.'
+		});
+	}
+	dbConn.query('DELETE FROM Drink WHERE Drink_Name = ?', Drink_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Drink has been deleted successfully.'
+		});
+	})
+})
+
 //SELECT ALL DRINK
+
+/*
+    TEST CASE#1
+    Testing Search All Drinks
+    method: GET
+    URL: http://localhost:3030/admin/search&/Drink
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Drink', function (req, res) {
 	dbConn.query('SELECT * FROM Drink', (error, results) => {
 		if (error) throw error;
@@ -733,10 +1157,32 @@ app.get('/admin/search&/Drink', function (req, res) {
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
-//Dessert_Name: Happy Toast
-//Dessert_Price: 120
-
 //INSERT DESSERT
+
+/*
+    TEST CASE#1
+    Testing Insert a Dessert
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Dessert
+    body: raw JSON
+    {
+		"Dessert_Name": "Cheep Ice Cream",
+    	"Dessert_Price": 80
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Insert a Dessert
+    method: POST
+    URL: http://localhost:3030/admin/insert&/Dessert
+    body: raw JSON
+    {
+		"Dessert_Name": "Max Bingsu",
+    	"Dessert_Price": 160
+    }
+*/
+
 app.post('/admin/insert&/Dessert', function (req, res) {
 	let info = {
 		Dessert_Name: req.body.Dessert_Name,
@@ -767,6 +1213,31 @@ app.post('/admin/insert&/Dessert', function (req, res) {
 })
 
 //UPDATE DESSERT
+
+/*
+    TEST CASE#1
+    Testing Update a Dessert
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Dessert/Cheep Ice Cream
+    body: raw JSON
+    {
+		"Dessert_Name": "Cheep Ice Cream",
+    	"Dessert_Price": 5
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Update a Dessert
+    method: PUT
+    URL: http://localhost:3030/admin/update&/Dessert/Max Bingsu
+    body: raw JSON
+    {
+		"Dessert_Name": "Max Bingsu",
+    	"Dessert_Price": 5555
+    }
+*/
+
 app.put('/admin/update&/Dessert/:name', function (req, res) {
 	let Dessert_Name = req.params.name;
 	let Dessert_Price = req.body.Dessert_Price;
@@ -794,28 +1265,28 @@ app.put('/admin/update&/Dessert/:name', function (req, res) {
 	})
 })
 
-//DELETE DESSERT
-app.delete('/admin/delete&/Dessert/:name', function (req, res) {
-	let Dessert_Name = req.params.name;
-	console.log(Dessert_Name);
-	if (!Dessert_Name) {
-		return res.status(400).send({
-			error: true,
-			message: 'Please provide dessert name.'
-		});
-	}
-	dbConn.query('DELETE FROM Dessert WHERE Dessert_Name = ?', Dessert_Name, function (error, results) {
-		if (error) throw error;
-		console.log(results);
-		return res.send({
-			error: false,
-			data: results[0],
-			message: 'Dessert has been deleted successfully.'
-		});
-	})
-})
-
 //SELECT BY DESSERT NAME
+
+/*
+    TEST CASE#1
+    Testing Search a Dessert by Dessert's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Dessertname/Cheep Ice Cream
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Dessert by Dessert's Name
+    method: GET
+    URL: http://localhost:3030/admin/search&/Dessertname/Max Bingsu
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Dessertname/:name', function (req, res) {
 	let Dessert_Name = req.params.name;
     if(!Dessert_Name) 
@@ -839,6 +1310,27 @@ app.get('/admin/search&/Dessertname/:name', function (req, res) {
 })
 
 //SELECT BY DESSERT PRICE
+
+/*
+    TEST CASE#1
+    Testing Search a Dessert by Dessert's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Dessertprice/5
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Search a Dessert by Dessert's Price
+    method: GET
+    URL: http://localhost:3030/admin/search&/Dessertprice/5555
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Dessertprice/:price', function (req, res) {
 	let Dessert_Price = req.params.price;
     if(!Dessert_Price) 
@@ -860,7 +1352,60 @@ app.get('/admin/search&/Dessertprice/:price', function (req, res) {
     })
 })
 
+//DELETE DESSERT
+
+/*
+    TEST CASE#1
+    Testing Delete a Dessert
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Dessert/Cheep Ice Cream
+    body: raw JSON
+    {
+    }
+*/
+
+/*
+    TEST CASE#2
+    Testing Delete a Dessert
+    method: DELETE
+    URL: http://localhost:3030/admin/delete&/Dessert/Max Bingsu
+    body: raw JSON
+    {
+    }
+*/
+
+app.delete('/admin/delete&/Dessert/:name', function (req, res) {
+	let Dessert_Name = req.params.name;
+	console.log(Dessert_Name);
+	if (!Dessert_Name) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide dessert name.'
+		});
+	}
+	dbConn.query('DELETE FROM Dessert WHERE Dessert_Name = ?', Dessert_Name, function (error, results) {
+		if (error) throw error;
+		console.log(results);
+		return res.send({
+			error: false,
+			data: results[0],
+			message: 'Dessert has been deleted successfully.'
+		});
+	})
+})
+
 //SELECT ALL DESSERT
+
+/*
+    TEST CASE#1
+    Testing Search All Desserts
+    method: GET
+    URL: http://localhost:3030/admin/search&/Dessert
+    body: raw JSON
+    {
+    }
+*/
+
 app.get('/admin/search&/Dessert', function (req, res) {
 	dbConn.query('SELECT * FROM Dessert', (error, results) => {
 		if (error) throw error;
