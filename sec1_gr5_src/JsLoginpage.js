@@ -54,6 +54,7 @@ async function adminLogin(username, password) {
     }
     else{
         localStorage.setItem("login", true);
+        localStorage.setItem("admin", true);
         alert("Welcome back "+res.data.firstname+" "+res.data.lastname);
         location.replace("HtmlAdminpage.html");
     }
