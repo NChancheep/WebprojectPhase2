@@ -34,6 +34,7 @@
         }
     </script>
     <script src = "JsAdminpage.js"></script>
+    <script src="JsChecklogin.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -72,7 +73,7 @@
     </style>
 </head>
 
-<body>
+<body onload="myFunction() , alwayscheck()">
     <main class="container-sd">
         <header class="row">
             <div class="Allnav">
@@ -89,8 +90,9 @@
                         <a href="HtmlOurstorypage.html">OUR STORY</a>
                         <a href="HtmlAboutuspage.html">ABOUT US</a>
                         <a href="HtmlCategoriespage.html">CATAGORIES</a>
-                        <a href="HtmlLoginpage.html">LOGIN</a>
-                        <a href="HtmlMainpage.html">LOG OUT</a>
+                        <div id="showSearch"></div>
+                        <div id="showLogin"></div>
+                        <div id="showLogout"></div>
                     </div>
                 </div>
                 <nav class="col text-right">

@@ -1,5 +1,22 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function myFunction(){
+    const login = localStorage.getItem('login');
+  if(login)
+  {
+    const fName = localStorage.getItem('firstname');
 
+    const Email = localStorage.getItem('email');
+   
+    const address = localStorage.getItem('address');
+   
+    const age = localStorage.getItem('age');
+
+  }
+  else{
+    alert("login first");
+        location.replace("HtmlLoginpage.html");
+  }
+}
 //User
 
 async function searchAllUser() {
