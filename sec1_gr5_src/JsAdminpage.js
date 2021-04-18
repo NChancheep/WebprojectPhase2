@@ -1,10 +1,10 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function myFunction(){
-    const login = localStorage.getItem('login');
-  if(login)
+    const adminlogin = localStorage.getItem('admin');
+  if(adminlogin)
   {
     const fName = localStorage.getItem('firstname');
-
+    const lName = localStorage.getItem('lastname');
     const Email = localStorage.getItem('email');
    
     const address = localStorage.getItem('address');

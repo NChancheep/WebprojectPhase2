@@ -1,5 +1,6 @@
 function myFunction() {
   const login = localStorage.getItem('login');
+  const adminlogin = localStorage.getItem('admin');
   if(login)
   {
     const fName = localStorage.getItem('firstname');
@@ -14,7 +15,10 @@ function myFunction() {
     document.getElementById("addressOut").innerHTML = address;
     const age = localStorage.getItem('age');
     document.getElementById("ageOut").innerHTML = age;
-
+    if (adminlogin) {
+      document.getElementById("adminbutton").innerHTML = `<input type="button" class="button"
+      onClick="location.href='HtmlAdminpage.html'" value='Admin' />`;
+    }
   }
   else{
     alert("login first");
