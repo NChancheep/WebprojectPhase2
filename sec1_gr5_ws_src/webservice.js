@@ -454,6 +454,60 @@ app.put('/admin/update&/User/:id', function (req, res) {
 	let preferences = req.body.preferences;
 	let email = req.body.email;
 	console.log(username, password, firstname, lastname, address, age, preferences, email);
+	if (!login_id) {
+		return res.status(400).send({
+			error: true,
+			message: "Please provide user's id"
+		})
+	}
+	if (!username) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide username.'
+		});
+	}
+	if (!password) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide password.'
+		});
+	}
+	if (!firstname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide firstname.'
+		});
+	}
+	if (!lastname) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide lastname.'
+		});
+	}
+	if (!address) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide address.'
+		});
+	}
+	if (!age) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide age.'
+		});
+	}
+	if (!preferences) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide preferences.'
+		});
+	}
+	if (!email) {
+		return res.status(400).send({
+			error: true,
+			message: 'Please provide email address.'
+		});
+	}
 	dbConn.query('UPDATE Login_Information SET username = ?, password = ?, firstname = ?, lastname = ?, address = ?, age = ?, preferences = ?, email = ? WHERE login_id = ?', [username, password, firstname, lastname, address, age, preferences, email, login_id], function (error, results) {
 		if (error) throw error;
 		console.log(results);
@@ -557,7 +611,7 @@ app.delete('/admin/delete&/User/:id', function (req, res) {
 	if (!login_id) {
 		return res.status(400).send({
 			error: true,
-			message: "Please provide user's login id."
+			message: "Please provide user's id."
 		});
 	}
 	dbConn.query('DELETE FROM Login_Information WHERE login_id = ?', login_id, function (error, results) {

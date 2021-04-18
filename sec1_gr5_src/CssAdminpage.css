@@ -184,9 +184,24 @@ nav a {
 }
 
 .shift {
-    padding-top: 230px;
     margin-bottom: 20px;
-    
 }
 
+.adjust {
+    margin-left: 50px;
+}
 
+.adjust_sub {
+    margin-bottom: 20px;
+}
+
+.line {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 1px solid black;
+}
+
+.input_deco {
+    border: 3px solid rgb(184, 183, 183);
+    border-radius: 4px;
+}
