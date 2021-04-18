@@ -34,6 +34,19 @@
         function closeNav() {
             document.getElementById("sidenavHome").style.width = "0";
         }
+        function reserved() 
+        {
+            const login = localStorage.getItem('login');
+            if(login)
+            {
+                document.getElementById("reserve1").innerHTML = `<a class="Renow" style="font-size: 1em;" href="HtmlReservepage.html">RESERVE NOW</a>`;
+                
+            } 
+            else{
+                document.getElementById("reserve2").innerHTML = `<a class="Renow" style="font-size: 1em;" href="HtmlLoginpage.html">RESERVE NOW</a>`;
+            } 
+        }
+        
     </script>
     <script src="JsChecklogin.js"></script>
     <style>
@@ -79,7 +92,7 @@
     </style>
 </head>
 
-<body onload="alwayscheck()">
+<body onload="alwayscheck(), reserved()">
     <main class="All">
         <div class="topbar">
             <nav class="col text-right">
@@ -169,7 +182,8 @@
                         <h5>* you need to login before reserved</h5>
                     </p>
                     <br>
-                    <a class="Renow" style="font-size: 1em;" href="">RESERVE NOW</a>
+                    <div id="reserve1"></div>
+                    <div id="reserve2"></div>
                 </div>
             </div>
         </div>
