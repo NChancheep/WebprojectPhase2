@@ -18,7 +18,7 @@ function myFunction(){
   }
 }
 //User
-
+//fetch url to pull list information user/
 async function searchAllUser() {
     const res = await (await fetch("http://localhost:3030/admin/search&/User", {
         method: 'GET'
@@ -40,7 +40,7 @@ async function selectByUserId(id) {
     let user = res.data;
     document.getElementById("byUserId").innerHTML = `Username: ${user.username} | Role: ${user.role} | Log: ${user.log} | [Name: ${user.firstname} ${user.lastname}] | Address: ${user.address} | Age: ${user.age} | Preferences: ${user.preferences} | Email: ${user.email}`;
 }
-
+//recive info what user input from system
 async function insertUser(us,pw,fname,lname,adrs,yo,pref,mail) {
     let info = {
         username: us,
@@ -63,7 +63,7 @@ async function insertUser(us,pw,fname,lname,adrs,yo,pref,mail) {
     console.log(res);
     document.getElementById("insertUserResult").innerHTML = res.message;
 }
-
+//update info user from system
 async function updateUser(id,us,pw,fname,lname,adrs,yo,pref,mail) {
     let info = {
         login_id: id,
@@ -87,7 +87,7 @@ async function updateUser(id,us,pw,fname,lname,adrs,yo,pref,mail) {
     console.log(res)
     document.getElementById("updateUserResult").innerHTML = res.message;
 }
-
+//delete user from system
 async function deleteUser(id) {
     const res = await (await fetch("http://localhost:3030/admin/delete&/User/" + id, {
         method: 'DELETE',

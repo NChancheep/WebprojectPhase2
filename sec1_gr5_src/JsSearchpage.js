@@ -1,3 +1,4 @@
+//show result select food by name
 async function search(name) {
     console.log(name);
     const res = await (await fetch("http://localhost:3030/search&/Food/" + name, {
@@ -12,8 +13,7 @@ async function search(name) {
     lists += `</ul>`;
     document.getElementById("result1").innerHTML = lists;
 }
-
-
+//show result select drink by name
 
 async function search1(name) {
     console.log(name);
@@ -29,6 +29,7 @@ async function search1(name) {
     lists += `</ul>`;
     document.getElementById("result2").innerHTML = lists;
 }
+//show result select dessert by name
 async function search2(name) {
     console.log(name);
     const res = await (await fetch("http://localhost:3030/search&/Dessert/" + name, {
@@ -43,7 +44,7 @@ async function search2(name) {
     lists += `</ul>`;
     document.getElementById("result3").innerHTML = lists;
 }
-
+//function show result select foodall
 async function FoodAll() {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Food", {
@@ -57,6 +58,7 @@ async function FoodAll() {
     lists += `</ul>`;
     document.getElementById("result4").innerHTML = lists;
 }
+//function show result select foodpriceall
 async function FoodPriceAll(Food_Price) {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Food_Price/" + Food_Price, {
@@ -70,7 +72,7 @@ async function FoodPriceAll(Food_Price) {
     lists += `</ul>`;
     document.getElementById("getfoodprice").innerHTML = lists;
 }
-
+//function show result select drinkall
 async function DrinkAll() {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Drink", {
@@ -84,6 +86,7 @@ async function DrinkAll() {
     lists += `</ul>`;
     document.getElementById("result4").innerHTML = lists;
 }
+//function show result select drinkpriceall
 async function DrinkPriceAll(Drink_Price) {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Drink_Price/" + Drink_Price, {
@@ -97,7 +100,7 @@ async function DrinkPriceAll(Drink_Price) {
     lists += `</ul>`;
     document.getElementById("getdrinkprice").innerHTML = lists;
 }
-
+//function show result select dessertall
 async function DessertAll() {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Dessert", {
@@ -111,6 +114,7 @@ async function DessertAll() {
     lists += `</ul>`;
     document.getElementById("result4").innerHTML = lists;
 }
+//function show result select dessertpriceall
 async function DessertPriceAll(Dessert_Price) {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Dessert_Price/" + Dessert_Price, {
@@ -124,7 +128,7 @@ async function DessertPriceAll(Dessert_Price) {
     lists += `</ul>`;
     document.getElementById("getdessertprice").innerHTML = lists;
 }
-
+//function show result select all location
 async function locationAll() {
     console.log("Clicked");
     const res = await (await fetch("http://localhost:3030/search&/Branch", {

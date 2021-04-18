@@ -80,7 +80,7 @@ app.post('/userlogin', function (req, res) {
 		}
 	});
 });
-
+//select admin information
 app.post('/adminlogin', function (req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
@@ -158,7 +158,7 @@ app.post('/register', function (req, res, next) {
 		}
 	})
 });
-
+///select foodname from sql
 router.get('/search&/Food/:name',function(req,res){
     let Food_Name = req.params.name;
     if(!Food_Name) 
@@ -173,7 +173,7 @@ router.get('/search&/Food/:name',function(req,res){
         return res.send({error:false,data:results,message:'Product retrssieved'});
     });                                                                                                                                               
 });
-///select foodprice
+///select foodprice from sql
 router.get('/search&/Food_Price/:price',function(req,res){
     let Food_Price = req.params.price;
     if(!Food_Price) 
@@ -188,14 +188,14 @@ router.get('/search&/Food_Price/:price',function(req,res){
     });                                                                                                                                               
 });
 
-///select all foodname
+///select all foodname from sql
 router.get('/search&/Food',function(req,res){
     dbConn.query('SELECT Food_Name FROM Food',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Food.'});
     });                                                                                                                                             
 });
-///select all foodPrice
+///select all foodPrice from sql
 router.get('/search&/Food_Price',function(req,res){
     dbConn.query('SELECT Food_Price,Food_Name FROM Food',function(error,results){
         if (error) throw error;
@@ -203,7 +203,7 @@ router.get('/search&/Food_Price',function(req,res){
     });                                                                                                                                             
 });
 
-///select drinkname
+///select drinkname from sql
 router.get('/search&/Drink/:name',function(req,res){
     let Drink_Name = req.params.name;
     if(!Drink_Name) 
@@ -218,7 +218,7 @@ router.get('/search&/Drink/:name',function(req,res){
         return res.send({error:false,data:results,message:'Product retrssieved'});
     });                                                                                                                                               
 });
-///select drinkprice
+///select drinkprice from sql
 router.get('/search&/Drink_Price/:price',function(req,res){
     let Drink_Price = req.params.price;
     if(!Drink_Price) 
@@ -232,14 +232,14 @@ router.get('/search&/Drink_Price/:price',function(req,res){
         return res.send({error:false,data:results,message:'Product retrssieved'});
     });                                                                                                                                               
 });
-///select all drinkname
+///select all drinkname from sql
 router.get('/search&/Drink',function(req,res){
     dbConn.query('SELECT Drink_Name FROM Drink',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Drink.'});
     });                                                                                                                                             
 });
-///select all drinkPrice
+///select all drinkPrice from sql
 router.get('/search&/Drink_Price',function(req,res){
     dbConn.query('SELECT Drink_Price,Drink_Name FROM Drink',function(error,results){
         if (error) throw error;
@@ -247,7 +247,7 @@ router.get('/search&/Drink_Price',function(req,res){
     });                                                                                                                                             
 });
 
-///select dessertname
+///select dessertname from sql
 router.get('/search&/Dessert/:name',function(req,res){
     let Dessert_Name = req.params.name;
     if(!Dessert_Name) 
@@ -263,7 +263,7 @@ router.get('/search&/Dessert/:name',function(req,res){
         return res.send({error:false,data:results,message:'Product retrssieved'});
     });                                                                                                                                               
 });
-///select dessertprice
+///select dessertprice from sql
 router.get('/search&/Dessert_Price/:price',function(req,res){
     let Dessert_Price = req.params.price;
     if(!Dessert_Price) 
@@ -277,14 +277,14 @@ router.get('/search&/Dessert_Price/:price',function(req,res){
         return res.send({error:false,data:results,message:'Product retrssieved'});
     });                                                                                                                                               
 });
-///select all dessertname
+///select all dessertname from sql
 router.get('/search&/Dessert',function(req,res){
     dbConn.query('SELECT Dessert_Name FROM Dessert',function(error,results){
         if (error) throw error;
         return res.send({error: false, data:results,message:'list Dessert.'});
     });                                                                                                                                             
 });
-///select all dessertPrice
+///select all dessertPrice from sql
 router.get('/search&/Dessert_Price',function(req,res){
     dbConn.query('SELECT Dessert_Price,Dessert_Name FROM Dessert',function(error,results){
         if (error) throw error;
@@ -337,6 +337,7 @@ router.get('/search&/Branch',function(req,res){
 		"email": "jump555@student.mahidol.ac.th"
     }
 */
+
 
 app.post('/admin/insert&/User', function (req, res) {
 	let info = {
@@ -533,6 +534,7 @@ app.put('/admin/update&/User/:id', function (req, res) {
     }
 */
 
+
 app.get('/admin/search&/User/:id', function (req, res) {
 	let login_id = req.params.id;
 	console.log(login_id);
@@ -585,6 +587,7 @@ app.get('/admin/search&/User/:id', function (req, res) {
     }
 */
 
+//admin delete data
 app.delete('/admin/delete&/User/:id', function (req, res) {
 	let login_id = req.params.id;
 	console.log(login_id);
@@ -617,6 +620,7 @@ app.delete('/admin/delete&/User/:id', function (req, res) {
     }
 */
 
+//result all user 
 app.get('/admin/search&/User', function (req, res) {
 	dbConn.query('SELECT * FROM Login_Information', function(error, results) {
 		if (error) throw error;
@@ -657,6 +661,7 @@ app.get('/admin/search&/User', function (req, res) {
     }
 */
 
+//add new data of food
 app.post('/admin/insert&/Food', function (req, res) {
 	let info = {
 		Food_Name: req.body.Food_Name,
@@ -712,6 +717,7 @@ app.post('/admin/insert&/Food', function (req, res) {
     }
 */
 
+//update data of food
 app.put('/admin/update&/Food/:name', function (req, res) {
 	let Food_Name = req.params.name;
 	let Food_Price = req.body.Food_Price;
@@ -761,6 +767,7 @@ app.put('/admin/update&/Food/:name', function (req, res) {
     }
 */
 
+//select food by name like
 app.get('/admin/search&/Foodname/:name', function (req, res) {
 	let Food_Name = req.params.name;
     if(!Food_Name) 
@@ -805,6 +812,7 @@ app.get('/admin/search&/Foodname/:name', function (req, res) {
     }
 */
 
+//select food by price
 app.get('/admin/search&/Foodprice/:price', function (req, res) {
 	let Food_Price = req.params.price;
     if(!Food_Price) 
@@ -848,6 +856,7 @@ app.get('/admin/search&/Foodprice/:price', function (req, res) {
     }
 */
 
+//delete food
 app.delete('/admin/delete&/Food/:name', function (req, res) {
 	let Food_Name = req.params.name;
 	console.log(Food_Name);
@@ -880,6 +889,7 @@ app.delete('/admin/delete&/Food/:name', function (req, res) {
     }
 */
 
+//result all food list
 app.get('/admin/search&/Food', function (req, res) {
 	dbConn.query('SELECT * FROM Food', (error, results) => {
 		if (error) throw error;
@@ -920,6 +930,7 @@ app.get('/admin/search&/Food', function (req, res) {
     }
 */
 
+//add new info about drink
 app.post('/admin/insert&/Drink', function (req, res) {
 	let info = {
 		Drink_Name: req.body.Drink_Name,
@@ -975,6 +986,7 @@ app.post('/admin/insert&/Drink', function (req, res) {
     }
 */
 
+//update data drink
 app.put('/admin/update&/Drink/:name', function (req, res) {
 	let Drink_Name = req.params.name;
 	let Drink_Price = req.body.Drink_Price;
@@ -1024,6 +1036,7 @@ app.put('/admin/update&/Drink/:name', function (req, res) {
     }
 */
 
+//search drink by name like
 app.get('/admin/search&/Drinkname/:name', function (req, res) {
 	let Drink_Name = req.params.name;
     if(!Drink_Name) 
@@ -1068,6 +1081,7 @@ app.get('/admin/search&/Drinkname/:name', function (req, res) {
     }
 */
 
+//search Drink by price
 app.get('/admin/search&/Drinkprice/:price', function (req, res) {
 	let Drink_Price = req.params.price;
     if(!Drink_Price) 
@@ -1143,6 +1157,7 @@ app.delete('/admin/delete&/Drink/:name', function (req, res) {
     }
 */
 
+//result all drink list
 app.get('/admin/search&/Drink', function (req, res) {
 	dbConn.query('SELECT * FROM Drink', (error, results) => {
 		if (error) throw error;
@@ -1183,6 +1198,7 @@ app.get('/admin/search&/Drink', function (req, res) {
     }
 */
 
+//insert data
 app.post('/admin/insert&/Dessert', function (req, res) {
 	let info = {
 		Dessert_Name: req.body.Dessert_Name,
@@ -1237,7 +1253,7 @@ app.post('/admin/insert&/Dessert', function (req, res) {
     	"Dessert_Price": 5555
     }
 */
-
+//update data dessert
 app.put('/admin/update&/Dessert/:name', function (req, res) {
 	let Dessert_Name = req.params.name;
 	let Dessert_Price = req.body.Dessert_Price;
@@ -1286,7 +1302,7 @@ app.put('/admin/update&/Dessert/:name', function (req, res) {
     {
     }
 */
-
+//select table dessert from alphabet
 app.get('/admin/search&/Dessertname/:name', function (req, res) {
 	let Dessert_Name = req.params.name;
     if(!Dessert_Name) 
@@ -1373,7 +1389,7 @@ app.get('/admin/search&/Dessertprice/:price', function (req, res) {
     {
     }
 */
-
+//delete item dessert
 app.delete('/admin/delete&/Dessert/:name', function (req, res) {
 	let Dessert_Name = req.params.name;
 	console.log(Dessert_Name);
@@ -1405,7 +1421,7 @@ app.delete('/admin/delete&/Dessert/:name', function (req, res) {
     {
     }
 */
-
+//list all dessert
 app.get('/admin/search&/Dessert', function (req, res) {
 	dbConn.query('SELECT * FROM Dessert', (error, results) => {
 		if (error) throw error;

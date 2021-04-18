@@ -55,6 +55,7 @@ function menu4(){
         branchRef.style.display = "block";
     }
 }
+
 function branchLoc1(){
     let showRef = document.getElementById("loc1");
     if (showRef.style.display == "none")

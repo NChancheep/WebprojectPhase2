@@ -27,7 +27,7 @@ async function userLogin(username, password) {
         location.replace("HtmlAccountpage.html");
     }
 }
-
+//sync data to recive infomation from user input  (username, password)
 async function adminLogin(username, password) {
     // event.preventDefault();
     let info = {

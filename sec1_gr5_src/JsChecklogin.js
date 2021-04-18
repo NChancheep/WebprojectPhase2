@@ -19,4 +19,4 @@ function logoutset()
   localStorage.clear();
   alert("logout successful");
 }
-
+///if already login must onclick logout only
