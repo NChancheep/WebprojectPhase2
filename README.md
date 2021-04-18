@@ -22,7 +22,8 @@ How to run this project<br>
 7.1.Our search function can be pressed even though there is value in input because it is "select all" function.<br>
 7.2.You can search everything but must be in a specific categories.<br>
 8.In admin page you can use every function like "SELECT, INSERT, UPDATE, DELETE"<br>
-9.Enjoy our work!!!!!<br>
+9.In categories page you can find the brach in api map that we use by press the name of country that you want<br>
+10.Enjoy!!!!!<br>
 <br>
 //////////////////////////////////////////////////////////////////////////////////////////<br>
 Ps: If you find any trouble in our file that submit on 'Mycourse' this is our link in github (download from 'main')<br>
